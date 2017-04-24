@@ -1,13 +1,13 @@
-angular.module("module1", [])
+angular.module("app", [])
 
-.controller("listsController", function($scope) {
+.controller("listsController", function($scope, todosService) {
         // $scope.massage = '';
-        $scope.todos = {}
+        // $scope.todos = {}
         $scope.newList = '';
-
+        $scope.todos = todosService.todos;
 
         $scope.addNewList = function(newList) {
-            $scope.todos[newList] = { 'a': 123, 'b': 654 };
+            todosService.setNewList(newList)
         }
 
         $scope.openList = function(list) {
@@ -15,7 +15,8 @@ angular.module("module1", [])
         }
 
     })
-    .controller("listController", function($scope) {
+    .controller("listController", function($scope, todosService) {
+        $scope.newTodo = '';
         // $scope.addNewTodo = function(ntd) {
         //     $scope.todos.push({
         //         id: Date.now(),

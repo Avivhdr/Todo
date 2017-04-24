@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html ng-app="module1">
+<html ng-app="app">
 
 <head>
     <title>Todo</title>
@@ -12,13 +12,24 @@
 <body>
 
     <div ng-controller="listsController">
-        <input id="newList" type="text" ng-model='newList' placeholder="Create new list:"></input>
+        <input id="newList" type="text" ng-model='newList' placeholder="Create a new list:"></input>
         <button ng-click="addNewList(newList)">Add list</button>
         <ul>
             <li ng-click="openList(value)" ng-repeat="(key,value) in todos">{{key}}</li>
         </ul>
         <hr>
     </div>
+
+
+    <!--<div ng-controller="listController">
+
+        <input id="newTodoInput" type="text" ng-model='newTodo' placeholder="Enter a new to-do"></input>
+        <button ng-click="addNewTodo(massage)">Add todo</button>
+
+        <div ng-repeat="todo in todos">
+
+            <input type="checkbox" name='aviv' value={{todo}}>
+            <label for='aviv'>{{todo.title}}</label>-->
 
     </div>
     </div>
