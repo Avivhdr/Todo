@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html ng-app="module1">
+
+<head>
+    <title>Todo</title>
+    <!--<base href="/" />-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="D:\Dev - New\ToDo\scripts\angular-route.min.js"></script>
+    <script src="D:\Dev - New\ToDo\scripts\app.js"></script>
+</head>
+
+<body>
+
+    <div ng-controller="listsController">
+        <input id="newList" type="text" ng-model='newList' placeholder="Create new list:"></input>
+        <button ng-click="addNewList(newList)">Add list</button>
+        <ul>
+            <li ng-click="openList(value)" ng-repeat="(key,value) in todos">{{key}}</li>
+        </ul>
+        <hr>
+    </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
