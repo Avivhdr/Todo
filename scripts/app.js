@@ -2,59 +2,54 @@ angular.module("app", [])
 
 .factory('todosService', function() {
     var todos = {
-        'shoping list': {
-            'milk': {
-                id: Date.now(),
-                title: 'milk',
-                completed: false,
-                details: ''
-            },
-            'bread': {
-                id: Date.now(),
-                title: 'bread',
-                completed: false,
-                details: ''
-            },
-        },
-        'general list': {
-            'fix phone': {
-                id: Date.now(),
-                title: 'fix phone',
-                completed: false,
-                details: ''
-            },
-            'fix tv': {
-                id: Date.now(),
-                title: 'fix tv',
-                completed: false,
-                details: ''
-            },
-        }
+        'shoping list': [{
+            id: Date.now(),
+            title: 'milk',
+            completed: false,
+            details: ''
+        }, {
+            id: Date.now(),
+            title: 'bread',
+            completed: false,
+            details: ''
+        }, ],
+        'general list': [{
+            id: Date.now(),
+            title: 'fix phone',
+            completed: false,
+            details: ''
+        }, {
+            id: Date.now(),
+            title: 'fix tv',
+            completed: false,
+            details: ''
+        }]
     };
     var currList = Object.keys(todos).length > 0 ? Object.keys(todos)[0] : [];
     return {
-
-        getCurrList: function() {
-            return currList;
-        },
 
         getTodos: function() {
             return todos;
         },
 
         setNewList: function(newList) {
-            todos[newList] = {};
+            todos[newList] = [];
             console.log('new list added:', todos);
         },
 
         setNewTodo: function(newTodoObj, currList) {
-            todos[currList][newTodoObj.title] = newTodoObj;
+            todos[currList].push(newTodoObj);
             console.log(todos[currList]);
+        },
+
+        getCurrList: function() {
+            console.log('got currList : ', currList);
+            return currList;
         },
 
         setCurrList: function(list) {
             currList = [list];
-            console.log('currList: ', currList);
+            console.log('set currList to: ', currList);
 
         }
 
@@ -62,36 +57,35 @@ angular.module("app", [])
 })
 
 .controller("listsController", function($scope, todosService) {
-        $scope.newList = '';
+    $scope.newList = '';
 
-        $scope.todos = todosService.getTodos();
-        $scope.currList = todosService.getCurrList();
+    $scope.todos = todosService.getTodos();
 
-        $scope.addNewList = function(newList) {
-            todosService.setNewList(newList);
-        }
+    $scope.addNewList = function(newList) {
+        todosService.setNewList(newList);
+        todosService.setCurrList(newList);
+    }
 
-        $scope.openList = function(listName) {
-            todosService.setCurrList(listName);
-            $scope.currList = todosService.getCurrList();
-        }
+    $scope.openList = function(listName) {
+        todosService.setCurrList(listName);
+    }
 
-    })
-    .controller("listController", function($scope, todosService) {
-        $scope.newTodo = '';
+})
 
-        $scope.todos = todosService.getTodos();
-        $scope.currList = todosService.getCurrList();
+.controller("listController", function($scope, todosService) {
+    $scope.newTodo = '';
 
-        $scope.addNewTodo = function(currList, newTodo) {
-            var newTodoObj = {
-                id: Date.now(),
-                title: newTodo,
-                completed: false,
-                details: ''
-            };
+    $scope.todos = todosService.getTodos();
+    $scope.currList = todosService.getCurrList();
 
-            todosService.setNewTodo(newTodoObj, currList);
+    $scope.addNewTodo = function(currList, newTodo) {
+        var newTodoObj = {
+            id: Date.now(),
+            title: newTodo,
+            completed: false,
+            details: ''
         };
-        //todo: restart place holder; 
-    });
+        todosService.setNewTodo(newTodoObj, currList);
+    };
+    //todo: restart place holder; 
+})

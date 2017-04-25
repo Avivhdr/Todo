@@ -29,12 +29,15 @@
 
         <div ng-if="currList.length>0">
 
-            <div ng-repeat="(key,value) in todos[currList]">
-                <input type="checkbox" name='aviv' value={{key}}> {{key}}</input>
-                <label for='aviv'>{{todos[list][title]}}</label>
+            <div ng-repeat="key in todos[currList]">
+                <input type="checkbox" value={{key}}> {{key.title}}</input>
             </div>
 
         </div>
+
+    </div>
+
+    <div>
 
     </div>
 </body>
