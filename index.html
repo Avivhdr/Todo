@@ -15,13 +15,18 @@
         <input id="newList" type="text" ng-model='newList' placeholder="Create a new list:"></input>
         <button ng-click="addNewList(newList)">Add list</button>
         <ul>
-            <li ng-click="openList(listName)" ng-repeat="(listName,value) in todos">{{listName}}</li>
+            <!--<li ng-click="openList(listName)" ng-repeat="(listName,value) in todos">{{listName}}</li>-->
+            <li ng-repeat="(listName,value) in todos"> {{listName}} </li>
         </ul>
     </div>
 
     <hr>
-    <div ng-controller="listController">
-        {{currList}}
+    <div ng-controller="currListController">
+
+        <div>
+            {{currList}}
+
+        </div>
         <br>
 
         <input id="newTodoInput" type="text" ng-model='newTodo' placeholder="Enter a new to-do"></input>
@@ -29,15 +34,14 @@
 
         <div ng-if="currList.length>0">
 
-            <div ng-repeat="key in todos[currList]">
-                <input type="checkbox" value={{key}}> {{key.title}}</input>
+            <div ng-repeat="(index,todo) in todos[currList]">
+                <input type="checkbox" ng-click="CompleteTodo(currList,todos[currList][index].id)"> <span ng-dblclick="viewTodo(currList,todos[currList][index].id)">{{todo.title}}</span></input>
             </div>
-
         </div>
 
     </div>
 
-    <div>
+    <div ng-controller="todoController">
 
     </div>
 </body>

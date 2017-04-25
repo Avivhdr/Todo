@@ -1,31 +1,35 @@
-angular.module("app", [])
+angular.module("app", ["ngRoute"])
 
 .factory('todosService', function() {
     var todos = {
         'shoping list': [{
-            id: Date.now(),
+            id: 1,
             title: 'milk',
             completed: false,
             details: ''
         }, {
-            id: Date.now(),
+            id: 2,
             title: 'bread',
             completed: false,
             details: ''
         }, ],
         'general list': [{
-            id: Date.now(),
+            id: 3,
             title: 'fix phone',
             completed: false,
             details: ''
         }, {
-            id: Date.now(),
+            id: 4,
             title: 'fix tv',
             completed: false,
             details: ''
         }]
     };
     var currList = Object.keys(todos).length > 0 ? Object.keys(todos)[0] : [];
+    var currTodo = {
+        currList: '',
+        index: undefined
+    }
     return {
 
         getTodos: function() {
@@ -51,8 +55,23 @@ angular.module("app", [])
             currList = [list];
             console.log('set currList to: ', currList);
 
-        }
+        },
 
+        CompleteTodo: function(todoId) {
+
+        },
+        setCurrTodo: function(currList, id) {
+            currTodo = {
+                currList: currList,
+                id: id
+            }
+            console.log('set CurrTodo: ' + currList + '-' + id);
+
+        },
+
+        getCurrTodo: function() {
+            return currTodo;
+        }
     }
 })
 
@@ -72,20 +91,36 @@ angular.module("app", [])
 
 })
 
-.controller("listController", function($scope, todosService) {
-    $scope.newTodo = '';
+.controller("currListController", function($scope, todosService) {
+        $scope.newTodo = '';
 
-    $scope.todos = todosService.getTodos();
-    $scope.currList = todosService.getCurrList();
+        $scope.todos = todosService.getTodos();
+        $scope.currList = todosService.getCurrList();
+        //open todo details
+        $scope.viewTodo = function(currList, id) {
+            console.log('currList:', currList);
+            console.log('id:', id);
+            todosService.setCurrTodo(currList, id);
+        }
 
-    $scope.addNewTodo = function(currList, newTodo) {
-        var newTodoObj = {
-            id: Date.now(),
-            title: newTodo,
-            completed: false,
-            details: ''
+        $scope.CompleteTodo = function(currList, todoId) {
+            console.log('todo id: ', todoId);
+            todosService.CompleteTodo(todoId);
+        }
+
+        $scope.addNewTodo = function(currList, newTodo) {
+            var newTodoObj = {
+                id: Date.now(),
+                title: newTodo,
+                completed: false,
+                details: ''
+            };
+            todosService.setNewTodo(newTodoObj, currList);
         };
-        todosService.setNewTodo(newTodoObj, currList);
-    };
-    //todo: restart place holder; 
-})
+        //todo: restart place holder; 
+    })
+    .controller('todoController', function($scope, todosService) {
+        $scope.todos = todosService.getTodos();
+
+
+    })
