@@ -5,48 +5,43 @@
     <title>Todo</title>
     <!--<base href="/" />-->
 
-    <script src="./bower_components/angular/angular.min.js"></script>
+    <!--<script src="./bower_components/angular/angular.min.js"></script>-->
 
     <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
-    <!--<script src="D:\Dev - New\ToDo\scripts\angular-route.min.js"></script>-->
-    <!--<script src="D:\Dev - New\ToDo\scripts\app.js"></script>-->
+    <!--<script src="\angular-route.min.js"></script>-->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="./views/main/main.js"></script>
+    <script src="./views/main/services.js"></script>
 </head>
 
 <body>
 
-    <div ng-controller="listsController">
-        <input id="newList" type="text" ng-model='newList' placeholder="Create a new list:"></input>
-        <button ng-click="addNewList(newList)">Add list</button>
-        <ul>
-            <!--<li ng-click="openList(listName)" ng-repeat="(listName,value) in todos">{{listName}}</li>-->
-            <li ng-repeat="(listName,value) in todos"> {{listName}} </li>
-        </ul>
-    </div>
+    <todo-list></todo-list>
 
-    <hr>
-    <div ng-controller="currListController">
+    <div ui-view></div>
+    <!--<hr>-->
+    <!--<div ng-controller="currListController">-->
+        <!--<div>-->
+            <!--{{currList}}-->
+        <!--</div>-->
+        <!--<br>-->
+<!---->
+        <!--<input id="newTodoInput" type="text" ng-model='newTodo' placeholder="Enter a new to-do" />-->
+        <!--<button ng-click="addNewTodo(currList,newTodo)">Add todo</button>-->
+<!---->
+        <!--<div ng-if="currList.length>0">-->
+<!---->
+            <!--<div ng-repeat="(index,todo) in todos[currList]">-->
+                <!--<input type="checkbox" ng-click="CompleteTodo(currList,todos[currList][index].id)"> <span ng-dblclick="viewTodo(currList,todos[currList][index].id)">{{todo.title}}</span></input>-->
+            <!--</div>-->
+        <!--</div>-->
+<!---->
+    <!--</div>-->
 
-        <div>
-            {{currList}}
+    <!--<div ng-controller="todoController">-->
 
-        </div>
-        <br>
-
-        <input id="newTodoInput" type="text" ng-model='newTodo' placeholder="Enter a new to-do"></input>
-        <button ng-click="addNewTodo(currList,newTodo)">Add todo</button>
-
-        <div ng-if="currList.length>0">
-
-            <div ng-repeat="(index,todo) in todos[currList]">
-                <input type="checkbox" ng-click="CompleteTodo(currList,todos[currList][index].id)"> <span ng-dblclick="viewTodo(currList,todos[currList][index].id)">{{todo.title}}</span></input>
-            </div>
-        </div>
-
-    </div>
-
-    <div ng-controller="todoController">
-
-    </div>
+    <!--</div>-->
 </body>
 
 </html>
