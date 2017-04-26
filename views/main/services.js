@@ -1,11 +1,5 @@
 (function () {
     angular.module('YuriService', ['ui.router'])
-        .config(function ($stateProvider) {
-            // $stateProvider
-            //     .stage('', {
-            //         url: ''
-            //     });
-        })
         .factory('todosService', function() {
             var todos = {
                 'shoping list': [{
