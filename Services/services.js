@@ -1,5 +1,5 @@
-(function () {
-    angular.module('YuriService', ['ui.router'])
+(function() {
+    angular.module('dataService', ['ui.router'])
         .factory('todosService', function() {
             var todos = {
                 'shoping list': [{
@@ -28,7 +28,7 @@
             var currList = Object.keys(todos).length > 0 ? Object.keys(todos)[0] : [];
             var currTodo = {
                 currList: '',
-                index: undefined
+                index: 0
             };
 
             function getTodos() {
@@ -40,11 +40,6 @@
                 console.log('new list added:', todos);
             }
 
-            function setNewTodo(newTodoObj, currList) {
-                todos[currList].push(newTodoObj);
-                console.log(todos[currList]);
-            }
-
             function getCurrList() {
                 return currList;
             }
@@ -53,32 +48,45 @@
                 currList = [list];
             }
 
-            function setCurrTodo(currList, id) {
-                currTodo = {
-                    currList: currList,
-                    id: id
-                };
-            }
-
-            function getCurrTodo() {
-                return currTodo;
-            }
-
             function addNewList(newList) {
                 setNewList(newList);
                 setCurrList(newList);
                 this.newList = '';
             }
 
+            function CompleteTodo(todoId) {
+                console.log(todos[currList][index]);
+                todos[currList][index].completed = true;
+                //linethrou completed todo
+            }
+
+            function setCurrTodo(index) {
+                currTodo = {
+                    currList: currList,
+                    id: id
+                };
+            }
+
+            // function getCurrTodo() {
+            //     return currTodo;
+            // }
+
+
+            function setNewTodo(newTodoObj) {
+                todos[currList].push(newTodoObj);
+                console.log(todos[currList]);
+            }
+
             return {
                 getTodos: getTodos,
                 // setNewList: setNewList,
-                setNewTodo: setNewTodo,
                 getCurrList: getCurrList,
                 setCurrList: setCurrList,
-                // setCurrTodo: setCurrTodo,
-                getCurrTodo: getCurrTodo,
                 addNewList: addNewList,
+                CompleteTodo: CompleteTodo,
+                setCurrTodo: setCurrTodo,
+                // getCurrTodo: getCurrTodo,
+                setNewTodo: setNewTodo,
                 currList: currList
             }
         })

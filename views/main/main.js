@@ -1,55 +1,64 @@
-(function () {
-    angular.module("app", ['YuriService'])
+(function() {
+    angular.module("app", ['dataService'])
 
+    .controller("listsController", function(todosService) {
+        var ctrl = this;
+        ctrl.newList = '';
+        ctrl.todos = todosService.getTodos();
+        ctrl.addNewList = todosService.addNewList.bind(ctrl);
 
-        .controller("listsController", function(todosService) {
-            var ctrl = this;
-            ctrl.newList = '';
-            ctrl.todos = todosService.getTodos();
-            ctrl.addNewList = todosService.addNewList.bind(ctrl);
+        ctrl.setCurrentList = todosService.setCurrList;
 
-            ctrl.setCurrentList = todosService.setCurrList;
+    })
 
-        })
+    .controller("currListController", function(todosService) {
+        ctrl.newTodo = '';
 
-        .controller("currListController", function($scope, todosService) {
-            $scope.newTodo = '';
+        ctrl.todos = todosService.getTodos();
+        ctrl.currList = todosService.currList;
 
-            $scope.todos = todosService.getTodos();
-            $scope.currList = todosService.getCurrList();
-            //open todo details
-            // $scope.viewTodo = function(currList, id) {
-            //     console.log('currList:', currList);
-            //     console.log('id:', id);
-            //     todosService.setCurrTodo(currList, id);
-            // }
-            //
-            // $scope.CompleteTodo = function(currList, todoId) {
-            //     console.log('todo id: ', todoId);
-            //     todosService.CompleteTodo(todoId);
-            // }
-            //
-            // $scope.addNewTodo = function(currList, newTodo) {
-            //     var newTodoObj = {
-            //         id: Date.now(),
-            //         title: newTodo,
-            //         completed: false,
-            //         details: ''
-            //     };
-            //     todosService.setNewTodo(newTodoObj, currList);
-            // };
-            //todo: restart place holder;
-        })
-        .controller('todoController', function($scope, todosService) {
-            $scope.todos = todosService.getTodos();
-        })
+        ctrl.addNewTodo = function(newTodo) {
+            var newTodoObj = {
+                id: Date.now(),
+                title: newTodo,
+                completed: false,
+                details: ''
+            };
+            todosService.setNewTodo(newTodoObj);
+        };
 
-        .directive('todoList', function () {
+        $scope.setCurrTodo = function(index) {
+            console.log('currList:', currList);
+            console.log('index:', index);
+            todosService.setCurrTodo(index);
+        }
+
+        ctrl.CompleteTodo = function(index) {
+            console.log('todo index: ', todoindex);
+            todosService.CompleteTodo(index);
+        };
+
+    })
+
+    // .controller('todoController', function($scope, todosService) {
+    //     $scope.todos = todosService.getTodos();
+    // })
+
+    .directive('todoLists', function() {
             return {
                 restrict: 'E',
-                templateUrl: './views/main/main.html',
+                templateUrl: './main.html',
                 controller: 'listsController',
                 controllerAs: 'ctrl'
             }
         })
+        // .directive('currList', function() {
+        //     return {
+        //         restrict: 'E',
+        //         templateUrl: './currList.html',
+        //         controller: 'currListController',
+        //         controllerAs: 'ctrl'
+
+    //     }
+    // })
 })();

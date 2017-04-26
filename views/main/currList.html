@@ -1,0 +1,15 @@
+<div>
+    {{currList}}
+
+
+    <input type="text" ng-model='ctrl.newTodo' placeholder="Enter a new to-do" />
+    <button ng-click="ctrl.addNewTodo(ctrl.newTodo)">Add todo</button>
+
+    <div ng-if="ctrl.currList.length>0">
+
+        <div ng-repeat="(index,todo) in ctrl.todos[currList]">
+            <input type="checkbox" ng-click="CompleteTodo(todos[currList][index])"> <span ng-dblclick="setCurrTodo(todos[currList][index])">{{todo.title}}</span>/>
+        </div>
+    </div>
+
+</div>
