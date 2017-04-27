@@ -4,7 +4,7 @@ console.log('service up');
     angular.module('dataService', [])
         .factory('todosService', function() {
             var todos = {
-                'shoping list': [{
+                'Shoping List': [{
                     id: 1,
                     title: 'milk',
                     completed: false,
@@ -15,7 +15,7 @@ console.log('service up');
                     completed: false,
                     details: ''
                 }, ],
-                'general list': [{
+                'General List': [{
                     id: 3,
                     title: 'fix phone',
                     completed: false,
@@ -43,11 +43,10 @@ console.log('service up');
             }
 
             function getCurrList() {
-                return currList;
+                return currList[0];
             }
 
             function setCurrList(list) {
-                console.log('curr list set to: ', list)
                 currList = [list];
             }
 
@@ -57,18 +56,19 @@ console.log('service up');
                 this.newList = '';
             }
 
-            function CompleteTodo(todoId) {
-                console.log(todos[currList][todoId]);
+            function completeTodo(todoId) {
+                debugger;
+                console.log('complete to do: ');
                 todos[currList][todoId].completed = true;
                 //linethrou completed todo
             }
 
             function setCurrTodo(todoId) {
+                console.log('currTodo set: ', currTodo);
                 currTodo = {
                     currList: currList,
                     id: todoId
                 };
-                console.log(currTodo);
 
             }
 
@@ -87,11 +87,11 @@ console.log('service up');
                 getCurrList: getCurrList,
                 setCurrList: setCurrList,
                 addNewList: addNewList,
-                CompleteTodo: CompleteTodo,
+                completeTodo: completeTodo,
                 setCurrTodo: setCurrTodo,
                 // getCurrTodo: getCurrTodo,
-                setNewTodo: setNewTodo,
-                currList: currList
+                setNewTodo: setNewTodo
+                // currList: currList // no-good: stay on the first value
             }
         })
 })();

@@ -5,10 +5,18 @@
     <input type="text" ng-model='ctrl2.newTodo' placeholder="Enter a new to-do" />
     <button ng-click="ctrl2.addNewTodo(ctrl2.newTodo)">Add todo</button>
 
-    <div ng-if="ctrl2.currList.length>0">
+        <div ng-if="ctrl2.currList.length>0">
 
-        <div ng-repeat="(index,todo) in ctrl2.todos[ctrl2.currList]">
+            <div ng-repeat="(index,todo) in ctrl2.todos[ctrl2.currList]">
+                <input type="checkbox" ng-click="ctrl2.completeTodo(ctrl2.todos[ctrl2.currList][index].id)">
+                <a ui-sref="home.list.todo({todoId: ctrl2.todos[ctrl2.currList][index].id})">{{todo.title}}</a>
+
+            </div>
         </div>
-    </div>
+
+    <div ui-view ></div>
 
 </div>
+<!---->
+
+<!---->

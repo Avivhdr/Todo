@@ -1,12 +1,14 @@
 <div>
     <input type="text" ng-model='ctrl.newList' placeholder="Create a new list:" />
     <button ng-click="ctrl.addNewList(ctrl.newList)">Add list</button>
-    <a ui-sref="list.details({listName: listName})" >sref - test </a>
+
     <ul>
-
         <li  ng-click="ctrl.setCurrList(listName)" ng-repeat="(listName,value) in ctrl.todos">
-            <a ui-sref="list.details({listName: listName})" >{{listName}} </a>
+            <a ui-sref="home.list({listName})"> {{listName}} </a>
         </li>
-
     </ul>
+
+
+
+    <div ui-view ></div>
 </div>
