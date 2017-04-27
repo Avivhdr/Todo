@@ -47,6 +47,7 @@ console.log('service up');
             }
 
             function setCurrList(list) {
+                console.log('curr list set to: ', list)
                 currList = [list];
             }
 
@@ -57,27 +58,28 @@ console.log('service up');
             }
 
             function CompleteTodo(todoId) {
-                console.log(todos[currList][index]);
-                todos[currList][index].completed = true;
+                console.log(todos[currList][todoId]);
+                todos[currList][todoId].completed = true;
                 //linethrou completed todo
             }
 
-            function setCurrTodo(index) {
+            function setCurrTodo(todoId) {
                 currTodo = {
                     currList: currList,
-                    id: id
+                    id: todoId
                 };
+                console.log(currTodo);
+
+            }
+
+            function setNewTodo(newTodoObj) {
+                todos[currList].push(newTodoObj);
             }
 
             // function getCurrTodo() {
             //     return currTodo;
             // }
 
-
-            function setNewTodo(newTodoObj) {
-                todos[currList].push(newTodoObj);
-                console.log(todos[currList]);
-            }
 
             return {
                 getTodos: getTodos,

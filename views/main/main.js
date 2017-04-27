@@ -1,24 +1,32 @@
 (function() {
-    angular.module("app", ['dataService'])
-
+    angular.module("app", ['dataService','ui.router'])
+        .config(function ($stateProvider, $urlRouterProvider){
+            $urlRouterProvider.otherwise("/");
+            $stateProvider
+                .state('list.details', {
+                    url: "/:currList",
+                    templateUrl: './views/main/currList.html',
+                    controller: 'currListController',
+                    })
+        })
     .controller('listsController', function(todosService) {
-        console.log('main up');
         var ctrl = this;
         ctrl.newList = '';
         ctrl.todos = todosService.getTodos();
         ctrl.addNewList = todosService.addNewList.bind(ctrl);
-
-        ctrl.setCurrentList = todosService.setCurrList;
+        ctrl.setCurrList = todosService.setCurrList;
 
     })
+    .controller("currListController", function(todosService,$stateParams) {
 
-    .controller("currListController", function(todosService) {
-        ctrl.newTodo = '';
+        todosService.setCurrList($stateParams.currList);
+        var ctrl2 = this; //will not work without this line
+        ctrl2.newTodo = '';
 
-        ctrl.todos = todosService.getTodos();
-        ctrl.currList = todosService.currList;
+        ctrl2.todos = todosService.getTodos();
+        ctrl2.currList = todosService.currList;
 
-        ctrl.addNewTodo = function(newTodo) {
+        ctrl2.addNewTodo = function(newTodo) {
             var newTodoObj = {
                 id: Date.now(),
                 title: newTodo,
@@ -28,38 +36,26 @@
             todosService.setNewTodo(newTodoObj);
         };
 
-        $scope.setCurrTodo = function(index) {
-            console.log('currList:', currList);
-            console.log('index:', index);
-            todosService.setCurrTodo(index);
-        }
+        ctrl2.setCurrTodo = todosService.setCurrTodo;
 
-        ctrl.CompleteTodo = function(index) {
-            console.log('todo index: ', todoindex);
-            todosService.CompleteTodo(index);
-        };
+        ctrl2.CompleteTodo = todosService.CompleteTodo;
 
     })
-
-    // .controller('todoController', function($scope, todosService) {
-    //     $scope.todos = todosService.getTodos();
-    // })
-
     .directive('todoLists', function() {
             return {
                 restrict: 'E',
-                templateUrl: '/main.html',
+                templateUrl: './views/main/main.html',
                 controller: 'listsController',
                 controllerAs: 'ctrl'
             }
-        })
-        .directive('currList', function() {
+    })
+    .directive('currList', function() {
             return {
                 restrict: 'E',
-                templateUrl: './currList.html',
+                templateUrl: './views/main/currList.html',
                 controller: 'currListController',
-                controllerAs: 'ctrl'
+                controllerAs: 'ctrl2'
 
-            }
-        })
+        }
+    })
 })();
