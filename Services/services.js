@@ -1,5 +1,7 @@
+console.log('service up');
+
 (function() {
-    angular.module('dataService', ['ui.router'])
+    angular.module('dataService', [])
         .factory('todosService', function() {
             var todos = {
                 'shoping list': [{

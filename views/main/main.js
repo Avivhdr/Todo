@@ -1,7 +1,8 @@
 (function() {
     angular.module("app", ['dataService'])
 
-    .controller("listsController", function(todosService) {
+    .controller('listsController', function(todosService) {
+        console.log('main up');
         var ctrl = this;
         ctrl.newList = '';
         ctrl.todos = todosService.getTodos();
@@ -47,18 +48,18 @@
     .directive('todoLists', function() {
             return {
                 restrict: 'E',
-                templateUrl: './main.html',
+                templateUrl: '/main.html',
                 controller: 'listsController',
                 controllerAs: 'ctrl'
             }
         })
-        // .directive('currList', function() {
-        //     return {
-        //         restrict: 'E',
-        //         templateUrl: './currList.html',
-        //         controller: 'currListController',
-        //         controllerAs: 'ctrl'
+        .directive('currList', function() {
+            return {
+                restrict: 'E',
+                templateUrl: './currList.html',
+                controller: 'currListController',
+                controllerAs: 'ctrl'
 
-    //     }
-    // })
+            }
+        })
 })();
