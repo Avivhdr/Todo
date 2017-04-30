@@ -8,15 +8,30 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="views/main/main.js"></script>
     <script src="./Services/services.js"></script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<button type="button" class="btn btn-default">test</button>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
+</head>
 <body ng-app="app">
 
     <div ui-view></div>
+<hr>
 
+    <!-- Split button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-info">Action</button>
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </div>
 </body>
 
 </html>
