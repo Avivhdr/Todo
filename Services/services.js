@@ -27,7 +27,7 @@ console.log('service up');
                     details: ''
                 }]
             };
-            var currList = Object.keys(todos).length > 0 ? Object.keys(todos)[0] : [];
+            var currList = Object.keys(todos).length > 0 ? Object.keys(todos)[0] : '';
             var currTodo = {
                 currList: '',
                 index: 0
@@ -39,21 +39,22 @@ console.log('service up');
 
             function setNewList(newList) {
                 todos[newList] = [];
-                console.log('new list added:', todos);
             }
 
             function getCurrList() {
-                return currList[0];
+                return currList;
             }
 
             function setCurrList(list) {
-                currList = [list];
+                currList = list;
             }
 
             function addNewList(newList) {
-                setNewList(newList);
-                setCurrList(newList);
-                this.newList = '';
+                if (newList) {
+                    setNewList(newList);
+                    setCurrList(newList);
+                    this.newList = '';
+                }
             }
 
             function deleteList(listName) {
@@ -74,7 +75,6 @@ console.log('service up');
             }
 
             function completeTodo(todoIndex) {
-                console.log('completetodo');
                 todos[currList][todoIndex].completed = !todos[currList][todoIndex].completed;
             }
 

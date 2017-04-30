@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
 
-            <div  ng-click="ctrl.setCurrList(listName)" ng-repeat="(listName,value) in ctrl.todos">
+            <div ng-click="ctrl.setCurrList(listName)" ng-repeat="(listName,value) in ctrl.todos">
                 <div class="btn-group">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
@@ -16,12 +16,11 @@
                 </div>
             </div>
 
-        <input type="text" ng-model='ctrl.newList' placeholder="Create a new list:" />
-        <button class="btn btn-default" ng-click="ctrl.addNewList(ctrl.newList)">Add list</button>
+        <input  ng-keyup="$event.keyCode == 13 && ctrl.addNewList(ctrl.newList)" type="text" ng-model='ctrl.newList' placeholder="Create a new list:" />
+        <button class="btn btn-default btn-sm" ng-click="ctrl.addNewList(ctrl.newList)">Add list</button>
 
-        <hr>
     </div>
 
 
-    <div class="col-md-6" ui-view ></div>
+    <div class="col-md-9" ui-view ></div>
 </div>

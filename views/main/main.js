@@ -37,7 +37,8 @@
         })
     .controller("currListController", function(todosService,$stateParams) {
         var ctrl = this; //will not work without this line
-        ctrl.currList = todosService.getCurrList();
+        todosService.setCurrList($stateParams.listName);
+        ctrl.currList =  todosService.getCurrList();
         ctrl.newTodo = '';
 
         ctrl.todos = todosService.getTodos();
@@ -67,5 +68,7 @@
 
         }
     })
-    // .controller('currTo')
+    .controller('currTodo', function(todosService, $stateParams) {
+
+    })
 })();
