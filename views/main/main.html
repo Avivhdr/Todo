@@ -1,14 +1,19 @@
-<div>
-    <input type="text" ng-model='ctrl.newList' placeholder="Create a new list:" />
-    <button ng-click="ctrl.addNewList(ctrl.newList)">Add list</button>
+<div class="row">
+    <div class="col-md-6">
+        <ul>
+            <li  ng-click="ctrl.setCurrList(listName)" ng-repeat="(listName,value) in ctrl.todos">
+                <a ui-sref="home.list({listName})"> {{listName}} </a>
+                <button ng-click="ctrl.renameList(listName)">Rename</button>
+                <button ng-click="ctrl.deleteList(listName)">Delete</button>
+            </li>
+        </ul>
 
-    <ul>
-        <li  ng-click="ctrl.setCurrList(listName)" ng-repeat="(listName,value) in ctrl.todos">
-            <a ui-sref="home.list({listName})"> {{listName}} </a>
-        </li>
-    </ul>
+        <input type="text" ng-model='ctrl.newList' placeholder="Create a new list:" />
+        <button ng-click="ctrl.addNewList(ctrl.newList)">Add list</button>
+
+        <hr>
+    </div>
 
 
-
-    <div ui-view ></div>
+    <div class="col-md-6" ui-view ></div>
 </div>

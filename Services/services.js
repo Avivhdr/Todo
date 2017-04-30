@@ -14,7 +14,7 @@ console.log('service up');
                     title: 'bread',
                     completed: false,
                     details: ''
-                }, ],
+                } ],
                 'General List': [{
                     id: 3,
                     title: 'fix phone',
@@ -56,9 +56,24 @@ console.log('service up');
                 this.newList = '';
             }
 
+            function deleteList(listName) {
+                if (confirm('Sure?')) {
+                    delete todos[listName];
+                } else return;
+            }
+
+            function renameList (listName) {
+                var newName = prompt('Enter a new name:');
+                if (todos.hasOwnProperty(newName)) {
+                    alert('Name already exist!');
+                } else {
+                    todos[newName] = todos[listName];
+                    delete todos[listName];
+                }
+            }
+
             function completeTodo(todoId) {
                 debugger;
-                console.log('complete to do: ');
                 todos[currList][todoId].completed = true;
                 //linethrou completed todo
             }
@@ -90,8 +105,10 @@ console.log('service up');
                 completeTodo: completeTodo,
                 setCurrTodo: setCurrTodo,
                 // getCurrTodo: getCurrTodo,
-                setNewTodo: setNewTodo
+                setNewTodo: setNewTodo,
                 // currList: currList // no-good: stay on the first value
+                deleteList: deleteList,
+                renameList: renameList
             }
         })
 })();

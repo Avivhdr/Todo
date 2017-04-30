@@ -23,6 +23,8 @@
         ctrl.todos = todosService.getTodos();
         ctrl.addNewList = todosService.addNewList.bind(ctrl);
         ctrl.setCurrList = todosService.setCurrList;
+        ctrl.deleteList = todosService.deleteList;
+        ctrl.renameList = todosService.renameList;
 
     })
     .directive('todoLists', function() {
@@ -34,13 +36,13 @@
             }
         })
     .controller("currListController", function(todosService,$stateParams) {
-        var ctrl2 = this; //will not work without this line
-        ctrl2.currList = todosService.getCurrList();
-        ctrl2.newTodo = '';
+        var ctrl = this; //will not work without this line
+        ctrl.currList = todosService.getCurrList();
+        ctrl.newTodo = '';
 
-        ctrl2.todos = todosService.getTodos();
+        ctrl.todos = todosService.getTodos();
 
-        ctrl2.addNewTodo = function(newTodo) {
+        ctrl.addNewTodo = function(newTodo) {
             var newTodoObj = {
                 id: Date.now(),
                 title: newTodo,
@@ -50,9 +52,9 @@
             todosService.setNewTodo(newTodoObj);
         };
 
-        ctrl2.setCurrTodo = todosService.setCurrTodo;
+        ctrl.setCurrTodo = todosService.setCurrTodo;
 
-        ctrl2.completeTodo = todosService.completeTodo;
+        ctrl.completeTodo = todosService.completeTodo;
 
 
     })
@@ -61,7 +63,7 @@
                 restrict: 'E',
                 templateUrl: './views/main/currList.html',
                 controller: 'currListController',
-                controllerAs: 'ctrl2'
+                controllerAs: 'ctrl'
 
         }
     })
