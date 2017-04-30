@@ -8,8 +8,8 @@
         <div ng-if="ctrl.currList.length>0">
 
             <div ng-repeat="(index,todo) in ctrl.todos[ctrl.currList]">
-                <input type="checkbox" ng-click="ctrl.completeTodo(ctrl.todos[ctrl.currList][index].id)">
-                <a ui-sref="home.list.todo({todoId: ctrl.todos[ctrl.currList][index].id})">{{todo.title}}</a>
+                <input type="checkbox" ng-click="ctrl.completeTodo(index)">
+                <a ng-class="{strike: todo.completed}"  ui-sref="home.list.todo({todoId: ctrl.todos[ctrl.currList][index].id})">{{todo.title}}</a>
 
             </div>
         </div>

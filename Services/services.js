@@ -64,7 +64,8 @@ console.log('service up');
 
             function renameList (listName) {
                 var newName = prompt('Enter a new name:');
-                if (todos.hasOwnProperty(newName)) {
+                if (newName === null) return;
+               if (todos.hasOwnProperty(newName)) {
                     alert('Name already exist!');
                 } else {
                     todos[newName] = todos[listName];
@@ -72,10 +73,9 @@ console.log('service up');
                 }
             }
 
-            function completeTodo(todoId) {
-                debugger;
-                todos[currList][todoId].completed = true;
-                //linethrou completed todo
+            function completeTodo(todoIndex) {
+                console.log('completetodo');
+                todos[currList][todoIndex].completed = !todos[currList][todoIndex].completed;
             }
 
             function setCurrTodo(todoId) {

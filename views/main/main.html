@@ -1,19 +1,20 @@
 <div class="row">
-    <div class="col-md-6">
-        <ul>
-            <li  ng-click="ctrl.setCurrList(listName)" ng-repeat="(listName,value) in ctrl.todos">
-                <a ui-sref="home.list({listName})">
-                    {{listName}}
-                </a>
+    <div class="col-md-2">
 
-
-
-
-
-                <button class="btn btn-default" ng-click="ctrl.renameList(listName)">Rename</button>
-                <button class="btn btn-danger" ng-click="ctrl.deleteList(listName)">Delete</button>
-            </li>
-        </ul>
+            <div  ng-click="ctrl.setCurrList(listName)" ng-repeat="(listName,value) in ctrl.todos">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a style="cursor: pointer" ng-click="ctrl.renameList(listName)">Rename</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a style="cursor: pointer" ng-click="ctrl.deleteList(listName)">Delete</a></li>
+                    </ul>
+                    <a ui-sref="home.list({listName})"><button type="button" class="btn btn-info">{{listName}}</button></a>
+                </div>
+            </div>
 
         <input type="text" ng-model='ctrl.newList' placeholder="Create a new list:" />
         <button class="btn btn-default" ng-click="ctrl.addNewList(ctrl.newList)">Add list</button>
