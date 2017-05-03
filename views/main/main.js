@@ -8,13 +8,13 @@
                     template: '<todo-lists></todo-lists>'
                 })
                 .state('home.list', {
-                    url: "/{listName}",
+                    url: ":listName",
                     template: '<curr-list></curr-list>'
                 })
                 .state('home.list.todo', {
-                    url: "/{todoId}",
+                    url: "/:todoId",
                     template: '<curr-todo></curr-todo>'
-            })
+                })
     })
     .controller('listsController', function(todosService) {
         var ctrl = this;
