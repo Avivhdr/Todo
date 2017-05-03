@@ -1,52 +1,74 @@
-console.log('service up');
-
-(function() {
+(function () {
     angular.module('dataService', [])
-        .factory('todosService', function() {
+        .factory('todosService', function () {
             var todos = {
-                'Shoping List': [{
-                    id: 1,
-                    title: 'milk',
-                    completed: false,
-                    details: ''
-                }, {
-                    id: 2,
-                    title: 'bread',
-                    completed: false,
-                    details: ''
-                } ],
-                'General List': [{
-                    id: 3,
-                    title: 'fix phone',
-                    completed: false,
-                    details: ''
-                }, {
-                    id: 4,
-                    title: 'fix tv',
-                    completed: false,
-                    details: ''
-                }]
+                'Shopping List': {
+                    1: {
+                        id: 1,
+                        title: 'milk',
+                        completed: false,
+                        details: '',
+                        created: 'Wed May 03 2016',
+                        daysPassed: 0
+                    },
+                    2: {
+                        id: 2,
+                        title: 'bread',
+                        completed: false,
+                        details: '',
+                        created: 'Wed May 01 2015',
+                        daysPassed: 0
+                    }
+                },
+                'General List': {
+                    3: {
+                        id: 3,
+                        title: 'fix phone',
+                        completed: false,
+                        details: '',
+                        created: 'Wed December 23 2015',
+                        daysPassed: 0
+                    },
+                    4: {
+                        id: 4,
+                        title: 'fix tv',
+                        completed: false,
+                        details: '',
+                        created: 'Wed July 23 2015',
+                        daysPassed: 0
+                    }
+                }
             };
-            var currList = Object.keys(todos).length > 0 ? Object.keys(todos)[0] : '';
-            var currTodo = {
-                currList: '',
-                index: 0
+            var state = {
+                currList: Object.keys(todos).length > 0 ? Object.keys(todos)[0] : '',
+                currTodoId: null
             };
 
             function getTodos() {
+                for (var list in todos) {
+                    for (var todoId in todos[list]) {
+                        var dp = ( Date.now() - Date.parse(todos[list][todoId].created) ) / 86400000;
+                        todos[list][todoId].daysPassed = Math.floor(dp);
+                    }
+                }
+
                 return todos;
             }
 
             function setNewList(newList) {
-                todos[newList] = [];
+                todos[newList] = {};
             }
 
             function getCurrList() {
-                return currList;
+                return state.currList;
+            }
+
+            function getState() {
+                return state;
             }
 
             function setCurrList(list) {
-                currList = list;
+                state.currList = list;
             }
 
             function addNewList(newList) {
@@ -63,10 +85,10 @@ console.log('service up');
                 } else return;
             }
 
-            function renameList (listName) {
+            function renameList(listName) {
                 var newName = prompt('Enter a new name:');
                 if (newName === null) return;
-               if (todos.hasOwnProperty(newName)) {
+                if (todos.hasOwnProperty(newName)) {
                     alert('Name already exist!');
                 } else {
                     todos[newName] = todos[listName];
@@ -74,26 +96,18 @@ console.log('service up');
                 }
             }
 
-            function completeTodo(todoIndex) {
-                todos[currList][todoIndex].completed = !todos[currList][todoIndex].completed;
-            }
-
-            function setCurrTodo(todoId) {
-                console.log('currTodo set: ', currTodo);
-                currTodo = {
-                    currList: currList,
-                    id: todoId
-                };
-
+            function completeTodo(todoId) {
+                todos[state.currList][todoId].completed = !todos[state.currList][todoId].completed;
             }
 
             function setNewTodo(newTodoObj) {
-                todos[currList].push(newTodoObj);
+                todos[state.currList][newTodoObj.id] = newTodoObj;
             }
 
-            // function getCurrTodo() {
-            //     return currTodo;
-            // }
+            function setCurrTodo(todoStateParams) {
+                state.currTodoId = todoStateParams.todoId;
+            }
+
 
 
             return {
@@ -108,7 +122,9 @@ console.log('service up');
                 setNewTodo: setNewTodo,
                 // currList: currList // no-good: stay on the first value
                 deleteList: deleteList,
-                renameList: renameList
+                renameList: renameList,
+                getState: getState
+
             }
         })
 })();

@@ -1,26 +1,27 @@
 <div class="row">
-    <div class="col-md-3">
-
-            <div ng-click="ctrl.setCurrList(listName)" ng-repeat="(listName,value) in ctrl.todos">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a style="cursor: pointer" ng-click="ctrl.renameList(listName)">Rename</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a style="cursor: pointer" ng-click="ctrl.deleteList(listName)">Delete</a></li>
-                    </ul>
-                    <a ui-sref="home.list({listName})"><button type="button" class="btn btn-info">{{listName}}</button></a>
-                </div>
-            </div>
-
-        <input  ng-keyup="$event.keyCode == 13 && ctrl.addNewList(ctrl.newList)" type="text" ng-model='ctrl.newList' placeholder="Create a new list:" />
+    <div class="col-xs-3">
+        <!---->
+        <div ng-repeat="(listName,value) in ctrl.todos" ng-click="ctrl.setCurrList(listName)">
+            <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a style="cursor: pointer" ng-click="ctrl.renameList(listName)">Rename</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a style="cursor: pointer" ng-click="ctrl.deleteList(listName)">Delete</a></li>
+                </ul>
+                <a ui-sref="home.list({listName})"> <button type="button" class="btn btn-info"> {{listName}} </button> </a>
+                            </div>
+        </div>
+        <hr>
+        <input class="form-control form-control-sm"
+               ng-keyup="$event.keyCode == 13 && ctrl.addNewList(ctrl.newList)" type="text"
+               ng-model='ctrl.newList' placeholder="Create a new list:"/>
         <button class="btn btn-default btn-sm" ng-click="ctrl.addNewList(ctrl.newList)">Add list</button>
-
     </div>
 
-
-    <div class="col-md-9" ui-view ></div>
+    <div class="col-xs-9" ui-view></div>
 </div>
