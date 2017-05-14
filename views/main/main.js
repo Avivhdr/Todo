@@ -1,11 +1,15 @@
 (function () {
     angular.module("app", ['serverService', 'dataService', 'ui.router', "ui.bootstrap", 'ngAnimate', 'ngTouch'])
         .config(function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise("/lists");
+            $urlRouterProvider.otherwise("/block");
             $stateProvider
                 .state('login', {
                     url: "/login",
                     template: '<log-in></log-in>'
+                })
+                .state('block', {
+                    url:"/block",
+                    template: '<block-lists></block-lists>'
                 })
                 .state('lists', {
                     url: "/lists",
@@ -102,6 +106,7 @@
             var ctrl = this;
             ctrl.newTodo = '';
             todosService.setCurrList($stateParams);
+            ctrl.users = todosService.getUsers();
             ctrl.state = todosService.getState();
             ctrl.todos = todosService.getTodos();
             ctrl.completeTodo = todosService.completeTodo;
@@ -139,6 +144,20 @@
                 restrict: 'E',
                 templateUrl: "./views/main/currTodo.html",
                 controller: 'currTodoController',
+                controllerAs: 'ctrl'
+            }
+        })
+        .controller('blockListscontroller', function (todosService, $stateParams) {
+            var ctrl = this;
+            ctrl.state = todosService.getState();
+            ctrl.users = todosService.getUsers();
+            ctrl.todos = todosService.getTodos();
+        } )
+        .directive('blockLists',function () {
+            return {
+                restrict: 'E',
+                templateUrl: "./views/main/blockLists.html",
+                controller: 'currListController',
                 controllerAs: 'ctrl'
             }
         })

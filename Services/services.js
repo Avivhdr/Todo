@@ -87,9 +87,10 @@
                     }
                 }
             };
+
             var state = {
                 userId: 2,
-                currList: '',
+                currList: 'General List',
                     // Object.keys(users[state.userId].todos).length > 0 ? Object.keys(users[userId].todos)[0] : '',
                 currTodoId: null
             };
