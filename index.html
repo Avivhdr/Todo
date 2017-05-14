@@ -6,34 +6,27 @@
     <!--<base href="/home" />-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="./bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <script src="views/main/main.js"></script>
+
+    <!--<script src="./Services/demo.js"></script>-->
     <script src="./Services/services.js"></script>
+    <script src="./Services/users.js"></script>
+    <script src="views/main/main.js"></script>
     <link href="./style.css" rel="stylesheet">
 
 </head>
 <body ng-app="app">
-<div>
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img alt="Brand" src="./img/logo.gif" style="hight: 35px; width: 103px">
-                </a>
-            </div>
-        </div>
-    </nav>
     <div ui-view></div>
-</div>
-
-
 
 </body>
 

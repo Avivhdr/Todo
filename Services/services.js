@@ -1,74 +1,127 @@
 (function () {
     angular.module('dataService', [])
         .factory('todosService', function () {
-            var todos = {
-                'Shopping List': {
-                    1: {
-                        id: 1,
-                        title: 'milk',
-                        completed: false,
-                        details: '',
-                        created: 'Wed May 03 2016',
-                        daysPassed: 0
-                    },
-                    2: {
-                        id: 2,
-                        title: 'bread',
-                        completed: false,
-                        details: '',
-                        created: 'Wed May 01 2015',
-                        daysPassed: 0
+            var users = {
+                1: {
+                    email: 'aviv1@gmail.com',
+                    password: '111111',
+                    todos: {
+                        'Shopping List': {
+                            1: {
+                                id: 1,
+                                title: 'milk',
+                                completed: false,
+                                details: '',
+                                created: 'Wed May 03 2016',
+                                daysPassed: 0
+                            },
+                            2: {
+                                id: 2,
+                                title: 'bread',
+                                completed: false,
+                                details: '',
+                                created: 'Wed May 01 2015',
+                                daysPassed: 0
+                            }
+                        },
+                        'General List': {
+                            3: {
+                                id: 3,
+                                title: 'fix phone',
+                                completed: false,
+                                details: '',
+                                created: 'Wed December 23 2015',
+                                daysPassed: 0
+                            },
+                            4: {
+                                id: 4,
+                                title: 'fix tv',
+                                completed: false,
+                                details: '',
+                                created: 'Wed July 23 2015',
+                                daysPassed: 0
+                            }
+                        }
                     }
                 },
-                'General List': {
-                    3: {
-                        id: 3,
-                        title: 'fix phone',
-                        completed: false,
-                        details: '',
-                        created: 'Wed December 23 2015',
-                        daysPassed: 0
-                    },
-                    4: {
-                        id: 4,
-                        title: 'fix tv',
-                        completed: false,
-                        details: '',
-                        created: 'Wed July 23 2015',
-                        daysPassed: 0
+                2: {
+                    email: 'aviv2@gmail.com',
+                    password: '222222',
+                    todos: {
+                        "Today's goals": {
+                            1: {
+                                id: 1,
+                                title: 'Goal 1',
+                                completed: false,
+                                details: '',
+                                created: 'Wed May 03 2016',
+                                daysPassed: 0
+                            },
+                            2: {
+                                id: 2,
+                                title: 'Goal 2',
+                                completed: false,
+                                details: '',
+                                created: 'Wed May 01 2015',
+                                daysPassed: 0
+                            }
+                        },
+                        'Tomorrow"s goals': {
+                            3: {
+                                id: 3,
+                                title: 'Tomorrow 1',
+                                completed: false,
+                                details: '',
+                                created: 'Wed December 23 2015',
+                                daysPassed: 0
+                            },
+                            4: {
+                                id: 4,
+                                title: 'tomorrow 2',
+                                completed: false,
+                                details: '',
+                                created: 'Wed July 23 2015',
+                                daysPassed: 0
+                            }
+                        }
                     }
                 }
             };
             var state = {
-                currList: Object.keys(todos).length > 0 ? Object.keys(todos)[0] : '',
+                userId: 2,
+                currList: '',
+                    // Object.keys(users[state.userId].todos).length > 0 ? Object.keys(users[userId].todos)[0] : '',
                 currTodoId: null
             };
 
+            // data
+
+            function getUsers() {
+                return users;
+            }
+
             function getTodos() {
-                for (var list in todos) {
-                    for (var todoId in todos[list]) {
-                        var dp = ( Date.now() - Date.parse(todos[list][todoId].created) ) / 86400000;
-                        todos[list][todoId].daysPassed = Math.floor(dp);
+                for (var list in users[state.userId].todos) {
+                    for (var todoId in users[state.userId].todos[list]) {
+                        var dp = ( Date.now() - Date.parse(users[state.userId].todos[list][todoId].created) ) / 86400000;
+                        users[state.userId].todos[list][todoId].daysPassed = Math.floor(dp);
                     }
                 }
 
-                return todos;
-            }
-
-            function setNewList(newList) {
-                todos[newList] = {};
-            }
-
-            function getCurrList() {
-                return state.currList;
+                return users[state.userId].todos;
             }
 
             function getState() {
                 return state;
             }
 
-            function setCurrList(list) {
-                state.currList = list;
+            // list
+            function setNewList(newList) {
+                users[state.userId].todos[newList] = {};
+            }
+
+            function setCurrList(StateParamsObj) {
+                state.currList = StateParamsObj.listName;
             }
 
             function addNewList(newList) {
@@ -81,49 +134,52 @@
 
             function deleteList(listName) {
                 if (confirm('Sure?')) {
-                    delete todos[listName];
+                    delete users[state.userId].todos[listName];
                 } else return;
             }
 
             function renameList(listName) {
                 var newName = prompt('Enter a new name:');
                 if (newName === null) return;
-                if (todos.hasOwnProperty(newName)) {
+                if (users[state.userId].todos.hasOwnProperty(newName)) {
                     alert('Name already exist!');
                 } else {
-                    todos[newName] = todos[listName];
-                    delete todos[listName];
+                    users[state.userId].todos[newName] = users[state.userId].todos[listName];
+                    delete users[state.userId].todos[listName];
                 }
             }
 
+            // todo
             function completeTodo(todoId) {
-                todos[state.currList][todoId].completed = !todos[state.currList][todoId].completed;
+                users[state.userId].todos[state.currList][todoId].completed = !users[state.userId].todos[state.currList][todoId].completed;
             }
 
-            function setNewTodo(newTodoObj) {
-                todos[state.currList][newTodoObj.id] = newTodoObj;
+            function addNewTodo(newTodoObj) {
+                users[state.userId].todos[state.currList][newTodoObj.id] = newTodoObj;
+                this.newTodo = '';
             }
 
-            function setCurrTodo(todoStateParams) {
-                state.currTodoId = todoStateParams.todoId;
+            function setCurrTodo(StateParamsObj) {
+                state.currTodoId = StateParamsObj.todoId;
             }
 
+            function deleteTodo() {
+                delete users[state.userId].todos[state.currList][state.currTodoId];
+            }
 
 
             return {
+                getUsers: getUsers,
                 getTodos: getTodos,
-                // setNewList: setNewList,
-                getCurrList: getCurrList,
+                getState: getState,
                 setCurrList: setCurrList,
                 addNewList: addNewList,
                 completeTodo: completeTodo,
                 setCurrTodo: setCurrTodo,
-                // getCurrTodo: getCurrTodo,
-                setNewTodo: setNewTodo,
-                // currList: currList // no-good: stay on the first value
+                addNewTodo: addNewTodo,
                 deleteList: deleteList,
                 renameList: renameList,
-                getState: getState
+                deleteTodo: deleteTodo
 
             }
         })

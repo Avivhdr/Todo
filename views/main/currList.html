@@ -1,19 +1,15 @@
 <div>
-    {{ctrl.currList}}
-    <br>
+    {{ctrl.state.currList}}<br>
 
-    <input type="text" ng-model="ctrl.newTodo" placeholder="Enter a new to-do" />
-    <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo)">Add</button>
+    <input class="form-control form-control-sm" type="text" ng-model="ctrl.newTodo" placeholder="Add a new to-do"/>
+    <button  class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo)">Add to-do</button>
 
-        <div ng-if="ctrl.currList.length>0">
-
-            <div ng-repeat="(todoId,todo) in ctrl.todos[ctrl.currList]">
-                <input type="checkbox" ng-click="ctrl.completeTodo(todoId)">
-                <a ng-class="{strike: todo.completed}"  ui-sref="home.list.todo({todoId: todoId})">{{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span></a>
-
-            </div>
-        </div>
+    <div ng-repeat="(todoId,todo) in ctrl.todos[ctrl.state.currList]">
+        <input type="checkbox"  ng-click="ctrl.completeTodo(todoId)">
+            <a ng-class="{strike: todo.completed}" ui-sref="lists.list.todo({todoId: todoId})">
+            {{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span></a>
+    </div>
     <hr>
-    <div ui-view ></div>
+    <div ui-view></div>
 
 </div>
