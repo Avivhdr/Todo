@@ -1,0 +1,59 @@
+.login {
+    background-image: url('img/BG/6.jpg') ;
+    height: 100%;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-main{
+    background-color: white ;
+    margin: 0 auto;
+    width: 20%;
+    border-radius: 8px;
+}
+
+.strike {
+    text-decoration: line-through
+}
+
+#lists {
+    background-color: #caffe5;
+    width: 300px;
+    height: 100%;
+    padding-right: 0;
+}
+
+#daysCount {
+    font-size: 70%;
+    color: #d9534f;
+}
+
+body {
+    /*background-image: url('./img/BG/6.jpg')*/
+}
+
+input[type="text"] {
+    width: 200px;
+    margin-left: 0;
+}
+
+.form-control {
+    display: inline;
+}
+
+.btn-sm {
+    display: inline;
+
+}
+
+.navbar.navbar-default {
+    margin: 0;
+}
+
+.curr-list-header{
+ font-size: 24px;
+}

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b905029-aa32-4fa5-aaf2-1c2b479fcf34" name="Default" comment="login">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5b905029-aa32-4fa5-aaf2-1c2b479fcf34" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -417,7 +415,7 @@
       <workItem from="1494252361217" duration="5755000" />
       <workItem from="1494421074190" duration="6364000" />
       <workItem from="1494755923315" duration="21000" />
-      <workItem from="1494757013503" duration="14715000" />
+      <workItem from="1494757013503" duration="14743000" />
     </task>
     <task id="LOCAL-00001" summary="route param">
       <created>1493312403681</created>
@@ -482,11 +480,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494794794789</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="login">
+      <created>1494794887148</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1494794887148</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173026000" />
+    <option name="totallyTimeSpent" value="173054000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
