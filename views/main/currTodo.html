@@ -1,16 +1,27 @@
-<br class="todoModel">
-    <input class="form-control form-control-sm" type="text" ng-model="ctrl.todos[ctrl.state.currList][ctrl.state.currTodoId].title">
-    <button ng-click="ctrl.deleteTodo()" class="btn btn-danger btn-sm">Delete to-do</button>
-    </br></br>
-    Details: </br>
-    <textarea class="form-control" type="text" ng-model="ctrl.todos[ctrl.state.currList][ctrl.state.currTodoId].details"></textarea>
-    </br></br></br>
-    Days passed: {{ctrl.todos[ctrl.state.currList][ctrl.state.currTodoId].daysPassed}}
-    </br>
-    Completed: {{ctrl.todos[ctrl.state.currList][ctrl.state.currTodoId].completed}}
-    </br></br></br>
-    Created on: </br>{{ctrl.todos[ctrl.state.currList][ctrl.state.currTodoId].created}}
+<div class="todoModel"><!---->
+    <!--<pre>{{ctrl|json}}</pre>-->
 
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">{{ctrl.todo.title}}</h3>
+    </div>
 
+    <div class="modal-body" id="modal-body">
+        <input class="form-control form-control-sm" type="text" ng-model="ctrl.todo.title">
+        </br></br>
+        Details: </br>
+        <textarea class="form-control" type="text" ng-model="ctrl.todo.details"></textarea>
+        </br></br>
+        Days passed: {{ctrl.todo.daysPassed}}
+        </br>
+        Completed: {{ctrl.todo.completed}}
+        </br></br>
+        Created on: </br>{{ctrl.todo.created}}
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn  btn-danger btn-sm" type="button" ng-click="ctrl.deleteTodo()">Delete</button>
+        <button class="btn btn-primary btn-sm" type="button" ng-click="ctrl.ok('aaa')">Save</button>
+        <button class="btn btn-warning btn-sm" type="button" ng-click="ctrl.cancel()">Cancel</button>
+    </div>
 
 </div>

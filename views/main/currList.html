@@ -1,13 +1,14 @@
 <div>
-    {{ctrl.state}}<br>
+    <br>
+    <!--<pre>{{ctrl|json}}</pre>-->
 
     <input class="form-control form-control-sm" type="text" ng-model="ctrl.newTodo" placeholder="Add a new to-do"/>
     <button  class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo)">Add to-do</button>
 
-    <div ng-repeat="(todoId,todo) in ctrl.todos[ctrl.state.currList]">
+    <div ng-repeat="(todoId,todo) in ctrl.userLists[ctrl.state.currListName]">
         <input type="checkbox"  ng-click="ctrl.completeTodo(todoId)">
-            <a ng-class="{strike: todo.completed}" ui-sref="lists.list.todo({todoId: todoId})">
-            {{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span></a>
+            <p ng-class="{strike: todo.completed}"  ng-dblclick="ctrl.open(todoId)" <p><!--*ui-sref="lists.list.todo({todoId: todoId})"-->
+            {{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span></p>
     </div>
     <hr>
     <div ui-view></div>

@@ -1,19 +1,20 @@
 .login {
     background-image: url('img/BG/6.jpg') ;
     height: 100%;
-}
-
-.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .login-main{
-    background-color: white ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightgrey;
     margin: 0 auto;
     width: 20%;
-    border-radius: 8px;
+    border-radius: 18px;
+    border-color: #122b40;
 }
 
 .strike {
