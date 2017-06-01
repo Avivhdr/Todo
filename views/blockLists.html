@@ -1,8 +1,6 @@
 <div class="blocks">
     <div ng-repeat="list in ctrl.userLists">
 
-
-
         <div class="block">
             <b>{{list.title}}</b>
             <br>
@@ -13,15 +11,11 @@
             <div ng-repeat="todo in list.todos">
                 <input type="checkbox" ng-click="ctrl.completeTodo(todo.id, $index, $parent.$index)">
                 <span ng-class="{strike: todo.completed}" ng-dblclick="ctrl.editTodo(todo, $index, $parent.$index)"><span>
-                {{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span></span>
+                {{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span>
             </div>
             <hr>
-
         </div>
 
-
-
     </div>
-
     <!--<curr-list></curr-list>-->
 </div>

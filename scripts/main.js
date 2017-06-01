@@ -13,7 +13,7 @@
                 })
                 .state('lists.list', {
                     url: '/{listId}',
-                    template: '<curr-list ></curr-list>',
+                    template: '<curr-list ></curr-list>'
                 })
                 .state('block', {
                     url: "/block",
@@ -100,10 +100,11 @@
                 if (!todoTitle) return;//todo: html validation
                 var newTodoObj = new utilService.Todo(todoTitle);
                 ctrl.userLists.forEach(function (list) {//couldn't do with map
-                    if (list.id === $stateParams.listId) {
+                    if (list.id === Number($stateParams.listId)) {
                         list.todos.push(newTodoObj)
                     }
                 });
+                debugger;
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
                 ctrl.newTodo = '';
             };
@@ -111,13 +112,13 @@
                 var listIndex = ctrl.userLists.findIndex(function (list) {
                     return list.id === ctrl.currList.id
                 });
-                ctrl.userLists[listIndex].todos[todoIndex].completed = !ctrl.userLists[listIndex].todos[todoIndex].completed
+                ctrl.userLists[listIndex].todos[todoIndex].completed = !ctrl.userLists[listIndex].todos[todoIndex].completed;
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-                ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, $stateParams.listId);
+                ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
             };
             ctrl.edit = function (todo, todoIndex) {
                 var modalInstance = $uibModal.open({
-                    templateUrl: './views/main/currTodo.html',
+                    templateUrl: './views/modal/currTodoModal.html',
                     controller: 'currTodoModalController',
                     controllerAs: 'ctrl',
                     resolve: {
@@ -167,7 +168,7 @@
                 ctrl.newTodo = [];
             };
             ctrl.completeTodo = function (todoId, todoIndex, listIndex) {
-                ctrl.userLists[listIndex].todos[todoIndex].completed = !ctrl.userLists[listIndex].todos[todoIndex].completed
+                ctrl.userLists[listIndex].todos[todoIndex].completed = !ctrl.userLists[listIndex].todos[todoIndex].completed;
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
             };
             ctrl.editTodo = function (todo, todoIndex, currListIndex) {
@@ -189,7 +190,7 @@
                 });
 
                 modalInstance.result.then(function (editedTodo) {
-                    ctrl.userLists[currListIndex].todos.splice(todoIndex, 1, editedTodo)
+                    ctrl.userLists[currListIndex].todos.splice(todoIndex, 1, editedTodo);
                     ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
                 }, function (reason) {
                     console.log(reason + ': Modal dismissed at: ' + new Date());
