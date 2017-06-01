@@ -1,0 +1,27 @@
+<div class="blocks">
+    <div ng-repeat="list in ctrl.userLists">
+
+
+
+        <div class="block">
+            <b>{{list.title}}</b>
+            <br>
+            <input type="text" class="form-control form-control-sm" ng-model="ctrl.newTodo[$index]"
+                   placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo)" />
+            <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo[$index],$index)">Add to-do</button>
+
+            <div ng-repeat="todo in list.todos">
+                <input type="checkbox" ng-click="ctrl.completeTodo(todo.id, $index, $parent.$index)">
+                <span ng-class="{strike: todo.completed}" ng-dblclick="ctrl.editTodo(todo, $index, $parent.$index)"><span>
+                {{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span></span>
+            </div>
+            <hr>
+
+        </div>
+
+
+
+    </div>
+
+    <!--<curr-list></curr-list>-->
+</div>

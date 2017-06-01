@@ -1,0 +1,83 @@
+.login {
+    background-image: url('img/BG/6.jpg') ;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightgrey;
+    margin: 0 auto;
+    width: 20%;
+    border-radius: 18px;
+    border-color: #122b40;
+}
+
+.blocks {
+    height: 100%;
+
+}
+
+.block {
+    border: 1px solid lightgrey;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 0 4px lightgray;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.strike {
+    text-decoration: line-through
+}
+
+#lists {
+    background-color: #caffe5;
+    width: 300px;
+    height: 100%;
+    padding-right: 0;
+}
+
+#daysCount {
+    font-size: 70%;
+    color: #d9534f;
+}
+
+body {
+    /*background-image: url('./img/BG/6.jpg')*/
+}
+
+input[type="text"] {
+    width: 200px;
+    margin-left: 0;
+}
+
+.form-control {
+    display: inline;
+}
+
+.btn-sm {
+    display: inline;
+
+}
+
+.navbar.navbar-default {
+    margin: 0;
+}
+
+.curr-list-header{
+ font-size: 24px;
+}
+
+.md-nav-item{
+    padding: 0;
+}
+.navBardemoBasicUsage md-content .ext-content {
+    padding: 50px;
+    margin: 20px;
+    background-color: #FFF2E0; }

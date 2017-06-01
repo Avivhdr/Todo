@@ -1,0 +1,39 @@
+<div class="row">
+
+
+    <!--<button ng-click="ctrl.open()">Open Modal</button>-->
+
+    <div class="col-xs-4">
+        </br>
+        <!--  add new list -->
+        <input type="text" class="form-control form-control-sm" ng-model='ctrl.newTitle'
+               placeholder="Add a new list:" ng-keyup="$event.keyCode == 13 && ctrl.addNewList({newTitle: ctrl.newTitle})" />
+        <button class="btn btn-default btn-sm" ng-click="ctrl.addNewList({newTitle: ctrl.newTitle})">Add list</button>
+
+        <!--  list of lists -->
+        <div ng-repeat="list in ctrl.userLists" >
+            <div class="btn-group">
+                <a ui-sref="lists.list({listId: list.id})">
+                    <button type="button" class="btn btn-info"> {{list.title}}</button>
+                </a>
+
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a style="cursor: pointer" ng-click="ctrl.renameList({newTitle: list.title, listId: list.id, listIndex: $index})">Rename</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a style="cursor: pointer" ng-click="ctrl.deleteList(list, $index)">Delete</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+
+    </div>
+    <br>
+    <!--<pre>{{ ctrl|json }}</pre>-->
+
+    <div class="col-xs-8" ui-view></div>
+</div>

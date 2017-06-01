@@ -1,0 +1,15 @@
+<div>
+    <b>{{ctrl.currList.title}}</b>
+    <br>
+    <input type="text" class="form-control form-control-sm" ng-model="ctrl.newTodo"
+           placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo)" />
+    <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo)">Add to-do</button>
+
+    <div ng-repeat="todo in ctrl.currList.todos">
+        <input type="checkbox" ng-click="ctrl.completeTodo($index)">
+        <span ng-class="{strike: todo.completed}" ng-dblclick="ctrl.edit(todo, $index)"><span>
+                {{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span></span>
+    </div>
+    <hr>
+
+</div>

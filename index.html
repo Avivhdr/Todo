@@ -1,19 +1,50 @@
 <!DOCTYPE>
-<html>
+<html lang="en">
 
 <head>
     <title>Todo</title>
-    <!--<base href="/" />-->
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="views/main/main.js"></script>
-    <script src="./Services/services.js"></script>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css">
 </head>
-
 <body ng-app="app">
 
-    <todo-lists></todo-lists>
-    <!--<curr-list></curr-list>-->
+    <div ng-controller="AppCtrl" ng-cloak>
+        <md-content class="md-padding">
+            <md-nav-bar
+                    md-selected-nav-item="currentNavItem"
+                    nav-bar-aria-label="navigation links">
+                <md-nav-item md-nav-sref="lists" name="home">
+                    <img alt="Logo" src="./img/logo.png" style="padding-bottom: 0; width: 153px">
+                </md-nav-item>
+                <md-nav-item md-nav-sref="block" name="page4">Multi display</md-nav-item>
+            </md-nav-bar>
+                <div ui-view></div>
+        </md-content>
+    </div>
+
+
+
+
+
+
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <!--<script src="./bower_components/lodash/lodash.js"></script>-->
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.js"></script>
+    <script src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="./bower_components/angular-touch/angular-touch.js"></script>
+    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <script src="Services/nav-bar.js"></script>
+    <script src="Services/server-actions-service.js"></script>
+    <script src="Scripts/main.js"></script>
+    <link href="./style.css" rel="stylesheet">
 
 </body>
 

@@ -1,0 +1,20 @@
+<div class="nameTakenModel">
+    <pre>{{ ctrl|json }}</pre>
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Choose a name!</h3>
+    </div>
+
+    <form name="form" novalidate>
+
+        <div class="modal-body" id="modal-body">
+            <label><input type="text" name="title" ng-model="ctrl.data.newTitle" placeholder="choose a new name" required><label/>
+                <span ng-show="form.title.$error.required">Don't leave me Blank :(</span>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary btn-sm" ng-click="ctrl.save()">Save</button>
+            <button class="btn btn-warning btn-sm" type="button" ng-click="ctrl.cancel()">Cancel</button>
+        </div>
+    </form>
+
+</div>

@@ -1,7 +1,0 @@
-<div>
-    <input type="text" ng-model='ctrl.newList' placeholder="Create a new list:" />
-    <button ng-click="ctrl.addNewList(ctrl.newList)">Add list</button>
-    <ul>
-        <li ng-click="ctrl.setCurrentList(listName)" ui-sref="" ng-repeat="(listName,value) in ctrl.todos">{{listName}}</li>
-    </ul>
-</div>
