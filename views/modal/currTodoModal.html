@@ -1,0 +1,26 @@
+<div class="todoModel">
+    <!--<pre>{{ ctrl|json }}</pre>-->
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Edit Todo</h3>
+    </div>
+
+    <div class="modal-body" id="modal-body">
+        <input class="form-control form-control-sm" type="text" ng-model="ctrl.tempTodo.title">
+        </br></br>
+        Details: </br>
+        <textarea class="form-control" type="text" ng-model="ctrl.tempTodo.details"></textarea>
+        </br></br>
+        Days passed: {{ctrl.tempTodo.daysPassed}}
+        </br>
+        Completed: {{ctrl.tempTodo.completed}}
+        </br></br>
+        Created on: </br>{{ctrl.tempTodo.created}}
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn  btn-danger btn-sm" type="button" ng-click="ctrl.deleteTodo()">Delete todo</button>
+        <button class="btn btn-primary btn-sm" type="button" ng-click="ctrl.save()">Save</button>
+        <button class="btn btn-warning btn-sm" type="button" ng-click="ctrl.cancel()">Cancel</button>
+    </div>
+
+</div>

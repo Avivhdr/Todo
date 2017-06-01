@@ -17,6 +17,21 @@
     border-color: #122b40;
 }
 
+.blocks {
+    height: 100%;
+
+}
+
+.block {
+    border: 1px solid lightgrey;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 0 4px lightgray;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
 .strike {
     text-decoration: line-through
 }
@@ -58,3 +73,11 @@ input[type="text"] {
 .curr-list-header{
  font-size: 24px;
 }
+
+.md-nav-item{
+    padding: 0;
+}
+.navBardemoBasicUsage md-content .ext-content {
+    padding: 50px;
+    margin: 20px;
+    background-color: #FFF2E0; }
