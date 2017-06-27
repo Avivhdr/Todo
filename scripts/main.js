@@ -1,5 +1,5 @@
 (function () {
-    angular.module("app", ['Service', 'ui.router', "ui.bootstrap",'ngAnimate', 'ngMaterial', 'ngTouch'])
+    angular.module("app", ['Service', 'ui.router', "ui.bootstrap",'ngAnimate', 'ngMaterial', 'ngTouch', 'ngSanitize'])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise("/lists");
             $stateProvider
@@ -40,12 +40,15 @@
         //     }
         // })
 
-        .controller('listsController', function (localStorageService, modalService, utilService) {
+        .controller('listsController', function (localStorageService, modalService, utilService, $state) {
             var ctrl = this;
             ctrl.newTitle = '';
             localStorageService.initLocalStorage('lists');
             ctrl.userLists = localStorageService.getStorageSync('lists');
 
+            ctrl.openList = function (listId) {
+                $state.go('lists.list',{listId: listId});
+            };
             ctrl.addNewList = function (data) {
                 if (!data.newTitle) return;//todo: html validation
                 if (utilService.doesItemTitleExists(ctrl.userLists, data.newTitle) !== -1) {
@@ -54,7 +57,6 @@
                         newTitle: data.newTitle
                     });
                 } else {
-                    debugger;
                     var newListObj = new utilService.List(data.newTitle);
                     //copy the array and manipulate the new array
                     ctrl.userLists.push(newListObj);
@@ -104,19 +106,24 @@
                         list.todos.push(newTodoObj)
                     }
                 });
-                debugger;
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
                 ctrl.newTodo = '';
             };
-            ctrl.completeTodo = function (todoIndex) {
-                var listIndex = ctrl.userLists.findIndex(function (list) {
-                    return list.id === ctrl.currList.id
-                });
-                ctrl.userLists[listIndex].todos[todoIndex].completed = !ctrl.userLists[listIndex].todos[todoIndex].completed;
+            ctrl.completeTodo = function () {
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-                ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
+
+                // var todoIndex = ctrl.currList.todos.findIndex(function (todo){
+                //     return todo.id === todoId;  //or use $index from the view
+                // });
+                // ctrl.currList.todos[todoIndex].completed = !ctrl.currList.todos[todoIndex].completed;
+
+                // var listIndex = ctrl.userLists.findIndex(function (list) {
+                //     return list.id === ctrl.currList.id
+                // });
+                // ctrl.userLists[listIndex].todos[todoIndex].completed = !ctrl.userLists[listIndex].todos[todoIndex].completed;
+                // ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
             };
-            ctrl.edit = function (todo, todoIndex) {
+            ctrl.editTodo = function (todo, todoIndex) {
                 var modalInstance = $uibModal.open({
                     templateUrl: './views/modal/currTodoModal.html',
                     controller: 'currTodoModalController',
@@ -160,6 +167,7 @@
             ctrl.newTodo = [];
             ctrl.userLists = localStorageService.getStorageSync('lists');
 
+
             ctrl.addNewTodo = function (todoTitle, listIndex) {
                 if (!todoTitle) return;//todo: html validation
                 var newTodoObj = new utilService.Todo(todoTitle);
@@ -167,14 +175,13 @@
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
                 ctrl.newTodo = [];
             };
-            ctrl.completeTodo = function (todoId, todoIndex, listIndex) {
-                ctrl.userLists[listIndex].todos[todoIndex].completed = !ctrl.userLists[listIndex].todos[todoIndex].completed;
+            ctrl.completeTodo = function () {
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
             };
             ctrl.editTodo = function (todo, todoIndex, currListIndex) {
                 var currListId = ctrl.userLists[currListIndex].id;
                 var modalInstance = $uibModal.open({
-                    templateUrl: './views/main/currTodo.html',
+                    templateUrl: './views/modal/currTodoModal.html',
                     controller: 'currTodoModalController',
                     controllerAs: 'ctrl',
                     resolve: {
@@ -250,7 +257,31 @@
 
         .controller('AppCtrl', function ($scope) {
             $scope.currentNavItem = 'page1';
-        });
+        })
+
+        .controller('DropdownCtrl', function ($scope, $log) {
+            $scope.items = [
+                'The first choice!',
+                'And another choice for you.',
+                'but wait! A third!'
+            ];
+
+            $scope.status = {
+                isopen: false
+            };
+
+            $scope.toggled = function(open) {
+                $log.log('Dropdown is now: ', open);
+            };
+
+            $scope.toggleDropdown = function($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.status.isopen = !$scope.status.isopen;
+            };
+
+            $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+    })
 
 })
 ();

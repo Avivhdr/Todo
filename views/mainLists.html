@@ -1,10 +1,8 @@
-<div class="row">
+<div class="row" >
+    <!--<pre>{{ ctrl|json }}</pre>-->
 
-
-    <!--<button ng-click="ctrl.open()">Open Modal</button>-->
-
-    <div class="col-xs-4">
-        </br>
+    <div class="col-xs-3 lists full-height">
+        <br>
         <!--  add new list -->
         <input type="text" class="form-control form-control-sm" ng-model='ctrl.newTitle'
                placeholder="Add a new list:" ng-keyup="$event.keyCode == 13 && ctrl.addNewList({newTitle: ctrl.newTitle})" />
@@ -12,28 +10,23 @@
 
         <!--  list of lists -->
         <div ng-repeat="list in ctrl.userLists" >
-            <div class="btn-group">
-                <a ui-sref="lists.list({listId: list.id})">
-                    <button type="button" class="btn btn-info"> {{list.title}}</button>
-                </a>
-
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
+            <div class="btn-group" uib-dropdown>
+                    <button id="split-button" type="button" class="btn btn-info list-name" ng-click="ctrl.openList(list.id)">
+                        {{list.title}}
+                    </button>
+                <button type="button" class="btn btn-info" uib-dropdown-toggle>
                     <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
+                    <span class="sr-only">Split button!</span>
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a style="cursor: pointer" ng-click="ctrl.renameList({newTitle: list.title, listId: list.id, listIndex: $index})">Rename</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a style="cursor: pointer" ng-click="ctrl.deleteList(list, $index)">Delete</a></li>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                    <li role="menuitem"><a ng-click="ctrl.renameList({newTitle: list.title, listId: list.id, listIndex: $index})">Rename</a></li>
+                    <li class="divider"></li>
+                    <li role="menuitem"><a ng-click="ctrl.deleteList(list, $index)">Delete</a></li>
                 </ul>
             </div>
         </div>
-        <hr>
-
     </div>
     <br>
-    <!--<pre>{{ ctrl|json }}</pre>-->
 
     <div class="col-xs-8" ui-view></div>
 </div>

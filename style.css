@@ -1,28 +1,57 @@
-.login {
-    background-image: url('img/BG/6.jpg') ;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+md-content {
+    background-image: url('img/BG/9.jpg') ;
+/*background-repeat: no-repeat;*/
+}
+.full-height{
+    height: 100%
+}
+._md-nav-bar-list{
+ background-color: #e7e7e7;
 }
 
-.login-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: lightgrey;
-    margin: 0 auto;
-    width: 20%;
-    border-radius: 18px;
-    border-color: #122b40;
+.nav {
+    padding: 0;
 }
+
+.logo {
+    height: inherit;
+    width: 88px;
+    position: absolute;
+    bottom: 4px;
+    right: 1px;
+}
+.lists {
+    background-color: lightgrey;
+
+}
+/*.login {*/
+    /*background-image: url('img/BG/6.jpg') ;*/
+    /*height: 100%;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+/*}*/
+
+/*.login-main{*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*background-color: lightgrey;*/
+    /*margin: 0 auto;*/
+    /*width: 20%;*/
+    /*border-radius: 18px;*/
+    /*border-color: #122b40;*/
+/*}*/
 
 .blocks {
     height: 100%;
-
 }
 
 .block {
+    margin-top: 10px;
+    float: left;
+    background-color: #f4fff0;
     border: 1px solid lightgrey;
     padding: 5px;
     border-radius: 3px;
@@ -32,10 +61,18 @@
     display: inline-block;
 }
 
+li {
+    cursor: pointer;
+}
+
 .strike {
     text-decoration: line-through
 }
+.center {
+    text-align: center;
+    font-weight: bold;
 
+}
 #lists {
     background-color: #caffe5;
     width: 300px;
@@ -44,8 +81,13 @@
 }
 
 #daysCount {
-    font-size: 70%;
+    font-size: 80%;
     color: #d9534f;
+}
+
+.list-name {
+    width: 170px;
+    text-align: left;
 }
 
 body {

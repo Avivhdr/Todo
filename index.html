@@ -9,23 +9,21 @@
 </head>
 <body ng-app="app">
 
-    <div ng-controller="AppCtrl" ng-cloak>
-        <md-content class="md-padding">
+    <div ng-controller="AppCtrl" ng-cloak >
+        <md-content class="md-padding nav">
             <md-nav-bar
                     md-selected-nav-item="currentNavItem"
                     nav-bar-aria-label="navigation links">
-                <md-nav-item md-nav-sref="lists" name="home">
-                    <img alt="Logo" src="./img/logo.png" style="padding-bottom: 0; width: 153px">
+                <md-nav-item md-nav-sref="lists">
+                    <img class="logo" src="img/logo.png" alt="logo" >
                 </md-nav-item>
-                <md-nav-item md-nav-sref="block" name="page4">Multi display</md-nav-item>
+                <md-nav-item md-nav-sref="block">
+                    Multi-View Display
+                </md-nav-item>
             </md-nav-bar>
                 <div ui-view></div>
         </md-content>
     </div>
-
-
-
-
 
 
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
@@ -35,12 +33,14 @@
     <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-material/angular-material.js"></script>
+    <script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>  <!--dropdown button-->
     <script src="./bower_components/angular-touch/angular-touch.js"></script>
     <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <link href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+
     <link href="./bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 
+    <!--<link href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">-->
     <script src="Services/nav-bar.js"></script>
     <script src="Services/server-actions-service.js"></script>
     <script src="scripts/main.js"></script>

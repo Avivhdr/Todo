@@ -1,5 +1,5 @@
 <div class="nameTakenModel">
-    <pre>{{ ctrl|json }}</pre>
+    <!--<pre>{{ ctrl|json }}</pre>-->
     <div class="modal-header">
         <h3 class="modal-title" id="modal-title">Choose a name!</h3>
     </div>
@@ -7,8 +7,8 @@
     <form name="form" novalidate>
 
         <div class="modal-body" id="modal-body">
-            <label><input type="text" name="title" ng-model="ctrl.data.newTitle" placeholder="choose a new name" required><label/>
-                <span ng-show="form.title.$error.required">Don't leave me Blank :(</span>
+            <label><input type="text" name="title" ng-model="ctrl.data.newTitle" placeholder="choose a new name" required></label>
+                <span ng-show="form.title.$error.required">Don't leave me blank :(</span>
         </div>
 
         <div class="modal-footer">

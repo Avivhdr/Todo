@@ -48,7 +48,7 @@
                         {
                             "id": 21,
                             "title": "ima shel micky",
-                            "completed": false,
+                            "completed": true,
                             "details": "",
                             "created": "Wed May 06 2016",
                             "daysPassed": 0
@@ -56,7 +56,7 @@
                         {
                             "id": 22,
                             "title": "ima shel ludi",
-                            "completed": false,
+                            "completed": true,
                             "details": "",
                             "created": "Wed May 04 2016",
                             "daysPassed": 0
@@ -64,7 +64,7 @@
                         {
                             "id": 23,
                             "title": "nir",
-                            "completed": false,
+                            "completed": true,
                             "details": "",
                             "created": "Wed May 07 2016",
                             "daysPassed": 0
@@ -72,7 +72,7 @@
                         {
                             "id": 24,
                             "title": "test",
-                            "completed": false,
+                            "completed": true,
                             "details": "",
                             "created": "Wed May 09 2016",
                             "daysPassed": 0
@@ -154,7 +154,7 @@
             return {
                 getUniqueUserId: getUniqueUserId,
                 getUniqueListId: getUniqueListId,
-                getUniqueTodoId: getUniqueTodoId,
+                getUniqueTodoId: getUniqueTodoId
             }
         })
 
@@ -190,11 +190,11 @@
             }
 
             function Todo(todoTitle) {
-                    this.id = uniqueIdService.getUniqueTodoId(),
-                    this.title = todoTitle,
-                    this.completed = false,
-                    this.details = '',
-                    this.created = new Date().toDateString(),
+                    this.id = uniqueIdService.getUniqueTodoId();
+                    this.title = todoTitle;
+                    this.completed = false;
+                    this.details = '';
+                    this.created = new Date().toDateString();
                     this.daysPassed = 0
             }
 
