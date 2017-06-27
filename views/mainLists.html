@@ -9,6 +9,8 @@
         <button class="btn btn-default btn-sm" ng-click="ctrl.addNewList({newTitle: ctrl.newTitle})">Add list</button>
 
         <!--  list of lists -->
+        <!--todo: yuri: fixing dropdown button-->
+        <!--todo: yuri: show scroll without reason-->
         <div ng-repeat="list in ctrl.userLists" >
             <div class="btn-group" uib-dropdown>
                     <button id="split-button" type="button" class="btn btn-info list-name" ng-click="ctrl.openList(list.id)">

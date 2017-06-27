@@ -21,25 +21,6 @@
                 })
         })
 
-        // .controller('logInController', function (loginService) {
-        //     var ctrl = this;
-        //     ctrl.user = {
-        //         email: '',
-        //         password: '',
-        //         password2: ''
-        //     };
-        //     ctrl.loginUser = loginService.authenticateUser;
-        //     ctrl.createAccount = loginService.createAccount;
-        // })
-        // .directive('logIn', function () {
-        //     return {
-        //         restrict: 'E',
-        //         templateUrl: './views/main/logIn.html',
-        //         controller: 'logInController',
-        //         controllerAs: 'ctrl'
-        //     }
-        // })
-
         .controller('listsController', function (localStorageService, modalService, utilService, $state) {
             var ctrl = this;
             ctrl.newTitle = '';
@@ -80,6 +61,7 @@
             ctrl.deleteList = function (list, listIndex) {
                 ctrl.userLists.splice(listIndex, 1);
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                $state.go('lists');
             };
 
         })
@@ -99,29 +81,20 @@
             ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
 
             ctrl.addNewTodo = function (todoTitle) {
-                if (!todoTitle) return;//todo: html validation
-                var newTodoObj = new utilService.Todo(todoTitle);
-                ctrl.userLists.forEach(function (list) {//couldn't do with map
-                    if (list.id === Number($stateParams.listId)) {
-                        list.todos.push(newTodoObj)
-                    }
-                });
-                ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-                ctrl.newTodo = '';
+                if (todoTitle !== '') {
+                    var newTodoObj = new utilService.Todo(todoTitle);
+                    ctrl.userLists.forEach(function (list) {//couldn't do with map
+                        if (list.id === Number($stateParams.listId)) {
+                            list.todos.push(newTodoObj)
+                        }
+                    });
+                    ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                    ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
+                    ctrl.newTodo = '';
+                }
             };
             ctrl.completeTodo = function () {
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-
-                // var todoIndex = ctrl.currList.todos.findIndex(function (todo){
-                //     return todo.id === todoId;  //or use $index from the view
-                // });
-                // ctrl.currList.todos[todoIndex].completed = !ctrl.currList.todos[todoIndex].completed;
-
-                // var listIndex = ctrl.userLists.findIndex(function (list) {
-                //     return list.id === ctrl.currList.id
-                // });
-                // ctrl.userLists[listIndex].todos[todoIndex].completed = !ctrl.userLists[listIndex].todos[todoIndex].completed;
-                // ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
             };
             ctrl.editTodo = function (todo, todoIndex) {
                 var modalInstance = $uibModal.open({
@@ -167,13 +140,13 @@
             ctrl.newTodo = [];
             ctrl.userLists = localStorageService.getStorageSync('lists');
 
-
             ctrl.addNewTodo = function (todoTitle, listIndex) {
-                if (!todoTitle) return;//todo: html validation
-                var newTodoObj = new utilService.Todo(todoTitle);
-                ctrl.userLists[listIndex].todos.push(newTodoObj);
-                ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-                ctrl.newTodo = [];
+                if (todoTitle !== '') {
+                    var newTodoObj = new utilService.Todo(todoTitle);
+                    ctrl.userLists[listIndex].todos.push(newTodoObj);
+                    ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                    ctrl.newTodo = [];
+                }
             };
             ctrl.completeTodo = function () {
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
@@ -254,34 +227,9 @@
             };
         })
 
-
         .controller('AppCtrl', function ($scope) {
             $scope.currentNavItem = 'page1';
         })
-
-        .controller('DropdownCtrl', function ($scope, $log) {
-            $scope.items = [
-                'The first choice!',
-                'And another choice for you.',
-                'but wait! A third!'
-            ];
-
-            $scope.status = {
-                isopen: false
-            };
-
-            $scope.toggled = function(open) {
-                $log.log('Dropdown is now: ', open);
-            };
-
-            $scope.toggleDropdown = function($event) {
-                $event.preventDefault();
-                $event.stopPropagation();
-                $scope.status.isopen = !$scope.status.isopen;
-            };
-
-            $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
-    })
 
 })
 ();
