@@ -1,5 +1,5 @@
-<div class="block">
-    <div class="center">{{ctrl.currList.title}}</div>
+<div class="list-display">
+    <div><p class="text-center"><b>{{ctrl.currList.title}}</b></p></div>
 
     <input type="text" class="form-control form-control-sm" ng-model="ctrl.newTodo"
            placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo)" />
@@ -8,7 +8,7 @@
     <div ng-repeat="todo in ctrl.currList.todos">
         <input type="checkbox" ng-model="todo.completed" ng-change="ctrl.completeTodo(todo)" >
         <span ng-class="{strike: todo.completed}" ng-dblclick="ctrl.editTodo(todo, $index)">
-                {{todo.title}} <span id="daysCount">{{todo.daysPassed}}</span></span>
+                {{todo.title}} <span class="daysCount">{{todo.daysPassed}}</span></span>
     </div>
     <hr>
 </div>

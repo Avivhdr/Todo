@@ -1,5 +1,5 @@
 (function () {
-    angular.module("app", ['Service', 'ui.router', "ui.bootstrap",'ngAnimate', 'ngMaterial', 'ngTouch', 'ngSanitize'])
+    angular.module("app", ['Service', 'ui.router', "ui.bootstrap",'ngAnimate', 'ngTouch', 'ngSanitize'])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise("/lists");
             $stateProvider
@@ -67,6 +67,7 @@
         })
         .directive('todoLists', function () {
             return {
+                replace: true, //todo
                 restrict: 'E',
                 templateUrl: './views/mainLists.html',
                 controller: 'listsController',

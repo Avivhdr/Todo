@@ -1,7 +1,9 @@
-<div class="row" >
+<div class="row">
     <!--<pre>{{ ctrl|json }}</pre>-->
+    <!--<div class="list-view">-->
 
-    <div class="col-xs-3 lists full-height">
+
+    <div class="col-xs-3 lists-list ">
         <br>
         <!--  add new list -->
         <input type="text" class="form-control form-control-sm" ng-model='ctrl.newTitle'
@@ -13,8 +15,8 @@
         <!--todo: yuri: show scroll without reason-->
         <div ng-repeat="list in ctrl.userLists" >
             <div class="btn-group" uib-dropdown>
-                    <button id="split-button" type="button" class="btn btn-info list-name" ng-click="ctrl.openList(list.id)">
-                        {{list.title}}
+                    <button id="split-button" type="button" class="btn btn-info list-name-button" ng-click="ctrl.openList(list.id)">
+                      {{list.title}}
                     </button>
                 <button type="button" class="btn btn-info" uib-dropdown-toggle>
                     <span class="caret"></span>
@@ -28,7 +30,7 @@
             </div>
         </div>
     </div>
-    <br>
 
-    <div class="col-xs-8" ui-view></div>
+    <div class="col-xs-9 curr-list" ui-view></div>
 </div>
+<!--</div>-->
