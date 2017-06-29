@@ -3,10 +3,6 @@
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise("/lists");
             $stateProvider
-            // .state('login', {
-            //     url: "/login",
-            //     template: '<log-in></log-in>'
-            // })
                 .state('lists', {
                     url: "/lists",
                     template: '<todo-lists></todo-lists>'
@@ -75,11 +71,35 @@
             }
         })
 
-        .controller("currListViewController", function (localStorageService, utilService, $log, $stateParams, $uibModal) {
+        .controller("currListViewController", function (localStorageService, utilService, modalService, $log, $stateParams, $uibModal, $state) {
             var ctrl = this;
             ctrl.newTodo = '';
             ctrl.userLists = localStorageService.getStorageSync('lists');
             ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
+            ctrl.renameList = function (data) {
+                data.listIndex = ctrl.userLists.findIndex(function(list){
+                    return list.id === data.listId
+                });
+                if (utilService.doesItemTitleExists(ctrl.userLists, data.newTitle) !== -1) {
+                    modalService.inputNewTitleModal({
+                        cb: ctrl.renameList,
+                        newTitle: data.newTitle,
+                        listId: data.listId,
+                        listIndex: data.listIndex
+                    });
+                } else {
+                    ctrl.userLists[data.listIndex].title = data.newTitle;
+                    ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                }
+            };
+            ctrl.deleteList = function () {
+                var listIndex = ctrl.userLists.findIndex(function(list){
+                    return list.id === ctrl.currList.id
+                });
+                ctrl.userLists.splice(listIndex, 1);
+                ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                $state.go('^');
+            };
 
             ctrl.addNewTodo = function (todoTitle) {
                 if (todoTitle !== '') {
@@ -136,7 +156,7 @@
             }
         })
 
-        .controller('blockListsController', function (localStorageService, utilService, $uibModal) {
+        .controller('blockListsController', function (localStorageService, modalService, utilService, $uibModal) {
             var ctrl = this;
             ctrl.newTodo = [];
             ctrl.userLists = localStorageService.getStorageSync('lists');
@@ -177,7 +197,31 @@
                     console.log(reason + ': Modal dismissed at: ' + new Date());
 
                 })
-            }
+            };
+
+            ctrl.renameList = function (data) {
+                data.listIndex = ctrl.userLists.findIndex(function(list){
+                    return list.id === data.listId
+                });
+                if (utilService.doesItemTitleExists(ctrl.userLists, data.newTitle) !== -1) {
+                    modalService.inputNewTitleModal({
+                        cb: ctrl.renameList,
+                        newTitle: data.newTitle,
+                        listId: data.listId,
+                        listIndex: data.listIndex
+                    });
+                } else {
+                    ctrl.userLists[data.listIndex].title = data.newTitle;
+                    ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                }
+            };
+            ctrl.deleteList = function (listId) {
+                var listIndex = ctrl.userLists.findIndex(function(list){
+                    return list.id === listId
+                });
+                ctrl.userLists.splice(listIndex, 1);
+                ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+            };
         })
         .directive('blockLists', function () {
             return {
@@ -231,6 +275,30 @@
         .controller('AppCtrl', function ($scope) {
             $scope.currentNavItem = 'page1';
         })
+
+        .controller('DropdownCtrl', function ($scope, $log) {
+            $scope.items = [
+                'The first choice!',
+                'And another choice for you.',
+                'but wait! A third!'
+            ];
+
+            $scope.status = {
+                isopen: false
+            };
+
+            $scope.toggled = function(open) {
+                $log.log('Dropdown is now: ', open);
+            };
+
+            $scope.toggleDropdown = function($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.status.isopen = !$scope.status.isopen;
+            };
+
+            $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+        });
 
 })
 ();
