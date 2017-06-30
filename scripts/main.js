@@ -1,11 +1,11 @@
 (function () {
-    angular.module("app", ['Service', 'ui.router', "ui.bootstrap",'ngAnimate', 'ngTouch', 'ngSanitize'])
+    angular.module("app", ['Service', 'ui.router', "ui.bootstrap", 'ngTouch'])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise("/lists");
             $stateProvider
                 .state('lists', {
                     url: "/lists",
-                    template: '<todo-lists></todo-lists>'
+                    template: '<main-lists></main-lists>'
                 })
                 .state('lists.list', {
                     url: '/{listId}',
@@ -13,21 +13,24 @@
                 })
                 .state('block', {
                     url: "/block",
-                    template: '<block-lists></block-lists>'
+                    template: '<multi-view></multi-view>'
                 })
         })
 
-        .controller('listsController', function (localStorageService, modalService, utilService, $state) {
+        .controller('mainListsController', function (localStorageService, modalService, utilService, $state) {
             var ctrl = this;
             ctrl.newTitle = '';
             localStorageService.initLocalStorage('lists');
             ctrl.userLists = localStorageService.getStorageSync('lists');
+            ctrl.firstListId = (ctrl.userLists[0] !== undefined)? ctrl.userLists[0].id : undefined;
 
             ctrl.openList = function (listId) {
-                $state.go('lists.list',{listId: listId});
+                if (listId !== undefined) {
+                    $state.go('lists.list',{listId: listId});
+                }
             };
             ctrl.addNewList = function (data) {
-                if (!data.newTitle) return;//todo: html validation
+                if (data.newTitle) {
                 if (utilService.doesItemTitleExists(ctrl.userLists, data.newTitle) !== -1) {
                     modalService.inputNewTitleModal({
                         cb: ctrl.addNewList,
@@ -41,70 +44,30 @@
                     ctrl.newTitle = '';
                 }
             };
-            ctrl.renameList = function (data) {
-                if (utilService.doesItemTitleExists(ctrl.userLists, data.newTitle) !== -1) {
-                    modalService.inputNewTitleModal({
-                        cb: ctrl.renameList,
-                        newTitle: data.newTitle,
-                        listId: data.listId,
-                        listIndex: data.listIndex
-                    });
-                } else {
-                    ctrl.userLists[data.listIndex].title = data.newTitle;
-                    ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-                }
-            };
-            ctrl.deleteList = function (list, listIndex) {
-                ctrl.userLists.splice(listIndex, 1);
-                ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-                $state.go('lists');
             };
 
+            ctrl.openList(ctrl.firstListId);
         })
-        .directive('todoLists', function () {
+        .directive('mainLists', function () {
             return {
                 replace: true, //todo
                 restrict: 'E',
-                templateUrl: './views/mainLists.html',
-                controller: 'listsController',
+                templateUrl: './views/main/mainLists.html',
+                controller: 'mainListsController',
                 controllerAs: 'ctrl'
             }
         })
 
-        .controller("currListViewController", function (localStorageService, utilService, modalService, $log, $stateParams, $uibModal, $state) {
+        .controller("currListController", function (localStorageService, modalService, utilService, $state, $stateParams, $uibModal) {
             var ctrl = this;
             ctrl.newTodo = '';
             ctrl.userLists = localStorageService.getStorageSync('lists');
             ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
-            ctrl.renameList = function (data) {
-                data.listIndex = ctrl.userLists.findIndex(function(list){
-                    return list.id === data.listId
-                });
-                if (utilService.doesItemTitleExists(ctrl.userLists, data.newTitle) !== -1) {
-                    modalService.inputNewTitleModal({
-                        cb: ctrl.renameList,
-                        newTitle: data.newTitle,
-                        listId: data.listId,
-                        listIndex: data.listIndex
-                    });
-                } else {
-                    ctrl.userLists[data.listIndex].title = data.newTitle;
-                    ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-                }
-            };
-            ctrl.deleteList = function () {
-                var listIndex = ctrl.userLists.findIndex(function(list){
-                    return list.id === ctrl.currList.id
-                });
-                ctrl.userLists.splice(listIndex, 1);
-                ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
-                $state.go('^');
-            };
 
             ctrl.addNewTodo = function (todoTitle) {
                 if (todoTitle !== '') {
                     var newTodoObj = new utilService.Todo(todoTitle);
-                    ctrl.userLists.forEach(function (list) {//couldn't do with map
+                    ctrl.userLists.forEach(function (list) {
                         if (list.id === Number($stateParams.listId)) {
                             list.todos.push(newTodoObj)
                         }
@@ -145,18 +108,43 @@
                     console.log(reason + ': Modal dismissed at: ' + new Date());
                 });
 
-            }
+            };
+
+            ctrl.renameList = function (data) {
+                data.listIndex = ctrl.userLists.findIndex(function(list){
+                    return list.id === data.listId
+                });
+                if (utilService.doesItemTitleExists(ctrl.userLists, data.newTitle) !== -1) {
+                    modalService.inputNewTitleModal({
+                        cb: ctrl.renameList,
+                        newTitle: data.newTitle,
+                        listId: data.listId,
+                        listIndex: data.listIndex
+                    });
+                } else {
+                    ctrl.userLists[data.listIndex].title = data.newTitle;
+                    ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                }
+            };
+            ctrl.deleteList = function () {
+                var listIndex = ctrl.userLists.findIndex(function(list){
+                    return list.id === ctrl.currList.id
+                });
+                ctrl.userLists.splice(listIndex, 1);
+                ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                $state.go('^', {}, {reload: true});
+            };
         })
         .directive('currList', function () {
             return {
                 restrict: 'E',
-                templateUrl: './views/currList.html',
-                controller: 'currListViewController',
+                templateUrl: './views/main/currList/currList.html',
+                controller: 'currListController',
                 controllerAs: 'ctrl'
             }
         })
 
-        .controller('blockListsController', function (localStorageService, modalService, utilService, $uibModal) {
+        .controller('multiViewController', function (localStorageService, modalService, utilService, $uibModal) {
             var ctrl = this;
             ctrl.newTodo = [];
             ctrl.userLists = localStorageService.getStorageSync('lists');
@@ -223,11 +211,11 @@
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
             };
         })
-        .directive('blockLists', function () {
+        .directive('multiView', function () {
             return {
                 restrict: 'E',
-                templateUrl: "./views/blockLists.html",
-                controller: 'blockListsController',
+                templateUrl: "./views/multiView/multiView.html",
+                controller: 'multiViewController',
                 controllerAs: 'ctrl'
             }
         })
@@ -255,7 +243,7 @@
             return {
                 restrict: 'E',
                 templateUrl: "./views/modal/currTodo.html",
-                controller: 'currTodoController',
+                controller: 'currTodoModalController',
                 controllerAs: 'ctrl'
             }
         })
@@ -272,33 +260,6 @@
             };
         })
 
-        .controller('AppCtrl', function ($scope) {
-            $scope.currentNavItem = 'page1';
-        })
-
-        .controller('DropdownCtrl', function ($scope, $log) {
-            $scope.items = [
-                'The first choice!',
-                'And another choice for you.',
-                'but wait! A third!'
-            ];
-
-            $scope.status = {
-                isopen: false
-            };
-
-            $scope.toggled = function(open) {
-                $log.log('Dropdown is now: ', open);
-            };
-
-            $scope.toggleDropdown = function($event) {
-                $event.preventDefault();
-                $event.stopPropagation();
-                $scope.status.isopen = !$scope.status.isopen;
-            };
-
-            $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
-        });
 
 })
 ();
