@@ -1,0 +1,59 @@
+.no-padding-top{
+    padding-top:0
+}
+.no-padding-left{
+    padding-left: 0
+}
+.no-padding-right{
+    padding-right: 0;
+}
+.full-height{
+    height: 100%;
+}
+.width-80{
+    width: 80%;
+}
+.margin-top-10{
+    margin-top: 10px;
+}
+.lineThrough {
+    text-decoration: line-through
+}
+
+.btn-sm{
+ font-size: 15px;
+}
+
+.body, .lists-list{
+    height: calc(100% - 55px)
+}
+
+.lists-list {
+    background-color: lightgrey;
+}
+
+.list-display {
+    background-color: #ECEBE3;
+    border: 1px solid lightgrey;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 0 4px lightgray;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    margin-left: 0;
+}
+
+input.ng-invalid {
+    background-color:pink;
+}
+
+.form-control {
+    display: inline;
+}
+
+.navbar.navbar-default {
+    margin: 0;
+}
