@@ -5,7 +5,7 @@
            placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo)"/>
     <br><br>
     <div ng-repeat="todo in ctrl.currList.todos">
-        <input type="checkbox" ng-model="todo.completed" ng-change="ctrl.completeTodo(todo)">
+        <input type="checkbox" ng-model="todo.completed" ng-change="ctrl.completeTodo()">
         <span  class="curr-todo" ng-class="{lineThrough: todo.completed}" ng-dblclick="ctrl.editTodo(todo, $index)">{{todo.title}} </span>
     </div>
     <hr>

@@ -79,6 +79,7 @@
             };
             ctrl.completeTodo = function () {
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
+                ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, Number($stateParams.listId));
             };
             ctrl.editTodo = function (todo, todoIndex) {
                 var modalInstance = $uibModal.open({
