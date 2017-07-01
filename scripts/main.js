@@ -1,5 +1,5 @@
 (function () {
-    angular.module("app", ['Service', 'ui.router', "ui.bootstrap", 'ngTouch'])
+    angular.module("app", ['Service', 'ui.router', "ui.bootstrap"])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise("/lists");
             $stateProvider
@@ -43,7 +43,7 @@
                     ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
                     ctrl.newTitle = '';
                 }
-            };
+            }
             };
 
             ctrl.openList(ctrl.firstListId);
