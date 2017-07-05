@@ -8,7 +8,7 @@
         <link href="style/style.css" rel="stylesheet">
     </head>
 
-    <body ng-app="app">
+    <body ng-app="myApp">
 
         <nav class="navbar navbar-default no-margin-buttom">
             <div class="navbar-header">
@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li ui-sref-active="active"><a ui-sref="lists">Main</a></li>
-                    <li ui-sref-active="active"><a ui-sref="block">Multi-view</a></li>
+                    <li ui-sref-active="active"><a ui-sref="block">Multi-List-view</a></li>
                 </ul>
             </div>
         </nav>
@@ -28,16 +28,12 @@
 
 
         <!--CDN-->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-                crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
         <script src="https://cdn.jsdelivr.net/angular.ui-router/1.0.1/angular-ui-router.min.js"></script>
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.6.4/angular-touch.js"></script>-->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
         <!--Bower components-->
@@ -48,7 +44,19 @@
         <!--<script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
         <!--<script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>-->
 
-        <script src="Services/server-actions-service.js"></script>
-        <script src="scripts/main.js"></script>
+
+        <script src="myApp.js"></script>
+        <script src="services/serviceModule.js"></script>
+        <script src="services/utilService.js"></script>
+        <script src="routeConfig/routeConfig.js"></script>
+        <script src="views/mainLists/mainListService.js"></script>
+        <script src="views/currListAndMultiViewService.js"></script>
+
+
+        <script src="views/mainLists/mainListController.js"></script>
+        <script src="views/currList/cuurListController.js"></script>
+        <script src="views/modal/editTodoModal/currTodoModalController.js"></script>
+        <script src="views/modal/newTitleModal/newTitleModalController.js"></script>
+        <script src="views/multiView/multiViewController.js"></script>
     </body>
 </html>

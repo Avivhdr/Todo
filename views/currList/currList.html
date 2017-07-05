@@ -1,0 +1,18 @@
+<div class="">
+    <h4><strong>{{ctrl.currList.title}}</strong></h4>
+    <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo)">+</button>
+    <input type="text" class="form-control form-control-sm width-80" ng-model="ctrl.newTodo"
+           placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo)"/>
+    <br><br>
+    <div ng-repeat="todo in ctrl.currList.todos">
+        <input type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()">
+        <label for="{{todo.id}}">
+            <span  class="curr-todo" ng-class="{lineThrough: todo.completed}" >{{todo.title}} </span>
+        </label>
+        <img ng-click="ctrl.openEditTodoModal({todo: todo, currListId: ctrl.currList.id})" src="/img/edit.png" alt="edit" style="height:12px ; width: 12px; cursor: pointer ">
+    </div>
+    <hr>
+        <button class="btn btn-success" ng-click="ctrl.renameList({newListTitle: ctrl.currList.title, listId: ctrl.currList.id})">Rename List</button>
+        <button class="btn btn-danger" ng-click="ctrl.deleteList()" >Delete List</button>
+    <hr>
+</div>

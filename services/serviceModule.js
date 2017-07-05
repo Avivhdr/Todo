@@ -1,36 +1,36 @@
 (function () {
-    angular.module('Service', ['app'])
+    angular.module('serviceModule', ['myApp'])
 
-        .factory('localStorageService', function () {
+    .factory('localStorageService', function () {
             var newUserLists = [
                 {
                     "id": 1,
-                    "title": "First List",
+                    "title": "Shopping List",
                     "todos": [
                         {
-                            "id": 1,
-                            "title": "client side validation",
+                            "id": 11,
+                            "title": "Milk",
                             "completed": false,
                             "details": "",
                             "created": "Wed May 06 2016"
                         },
                         {
-                            "id": 2,
-                            "title": "replace alert with modal",
+                            "id": 12,
+                            "title": "Bread",
                             "completed": false,
                             "details": "",
                             "created": "Wed May 04 2016"
                         },
                         {
-                            "id": 3,
-                            "title": "First Todo",
+                            "id": 13,
+                            "title": "Cheese",
                             "completed": false,
                             "details": "",
                             "created": "Wed May 07 2016"
                         },
                         {
-                            "id": 4,
-                            "title": "First Todo",
+                            "id": 14,
+                            "title": "mayonnaise",
                             "completed": false,
                             "details": "",
                             "created": "Wed May 09 2016"
@@ -39,137 +39,89 @@
                 },
                 {
                     "id": 2,
-                    "title": "Second List",
+                    "title": "Packing for trip",
                     "todos": [
                         {
                             "id": 21,
-                            "title": "ima shel micky",
+                            "title": "sun glasses",
                             "completed": true,
                             "details": "",
                             "created": "Wed May 06 2016"
                         },
                         {
                             "id": 22,
-                            "title": "ima shel ludi",
-                            "completed": true,
+                            "title": "swim pants",
+                            "completed": false,
                             "details": "",
                             "created": "Wed May 04 2016"
                         },
                         {
                             "id": 23,
-                            "title": "nir",
-                            "completed": true,
+                            "title": "towel",
+                            "completed": false,
                             "details": "",
                             "created": "Wed May 07 2016"
                         },
                         {
                             "id": 24,
-                            "title": "test",
-                            "completed": true,
+                            "title": "book",
+                            "completed": false,
                             "details": "",
                             "created": "Wed May 09 2016"
                         }
                     ]
                 },
                 {
-                    "id": 2,
-                    "title": "Second List",
+                    "id": 3,
+                    "title": "To Do",
                     "todos": [
                         {
-                            "id": 21,
-                            "title": "ima shel micky",
+                            "id": 31,
+                            "title": "call mom",
                             "completed": true,
                             "details": "",
                             "created": "Wed May 06 2016"
                         },
                         {
-                            "id": 22,
-                            "title": "ima shel ludi",
-                            "completed": true,
+                            "id": 32,
+                            "title": "clean home",
+                            "completed": false,
                             "details": "",
                             "created": "Wed May 04 2016"
                         },
                         {
-                            "id": 23,
-                            "title": "nir",
-                            "completed": true,
+                            "id": 33,
+                            "title": "go to store (see shopping list)",
+                            "completed": false,
                             "details": "",
                             "created": "Wed May 07 2016"
                         },
                         {
-                            "id": 24,
-                            "title": "test",
-                            "completed": true,
+                            "id": 34,
+                            "title": "pick up mail",
+                            "completed": false,
                             "details": "",
                             "created": "Wed May 09 2016"
                         }
                     ]
                 },
                 {
-                    "id": 2,
-                    "title": "Second List",
+                    "id": 4,
+                    "title": "Download",
                     "todos": [
                         {
-                            "id": 21,
-                            "title": "ima shel micky",
+                            "id": 41,
+                            "title": "Rick & Morty",
                             "completed": true,
                             "details": "",
                             "created": "Wed May 06 2016"
                         },
                         {
                             "id": 22,
-                            "title": "ima shel ludi",
-                            "completed": true,
+                            "title": "Planet Earth 2",
+                            "completed": false,
                             "details": "",
                             "created": "Wed May 04 2016"
-                        },
-                        {
-                            "id": 23,
-                            "title": "nir",
-                            "completed": true,
-                            "details": "",
-                            "created": "Wed May 07 2016"
-                        },
-                        {
-                            "id": 24,
-                            "title": "test",
-                            "completed": true,
-                            "details": "",
-                            "created": "Wed May 09 2016"
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "title": "Second List",
-                    "todos": [
-                        {
-                            "id": 21,
-                            "title": "ima shel micky",
-                            "completed": true,
-                            "details": "",
-                            "created": "Wed May 06 2016"
-                        },
-                        {
-                            "id": 22,
-                            "title": "ima shel ludi",
-                            "completed": true,
-                            "details": "",
-                            "created": "Wed May 04 2016"
-                        },
-                        {
-                            "id": 23,
-                            "title": "nir",
-                            "completed": true,
-                            "details": "",
-                            "created": "Wed May 07 2016"
-                        },
-                        {
-                            "id": 24,
-                            "title": "test",
-                            "completed": true,
-                            "details": "",
-                            "created": "Wed May 09 2016"
                         }
                     ]
                 }
@@ -226,22 +178,7 @@
             }
         })
 
-        .factory("uniqueIdService", function () {
-            function getUniqueListId() {
-                return Math.floor(Date.now()/3);
-            }
-
-            function getUniqueTodoId() {
-                return Math.floor(Date.now()/3*5);
-            }
-
-            return {
-                getUniqueListId: getUniqueListId,
-                getUniqueTodoId: getUniqueTodoId
-            }
-        })
-
-        .factory('utilService', function (uniqueIdService) {
+    .factory('utilService', function () {
 
             function getItemFromArrayById(array, itemId) {
                 return array.find(function (item) {
@@ -250,9 +187,10 @@
             }
 
             function doesItemTitleExists(array, itemTitle) {
-                return array.findIndex(function (item) {
+                var listIndex = array.findIndex(function (item) {
                     return item.title === itemTitle;
-                })
+                });
+                return listIndex !== -1
             }
 
             function returnIndexFromItemId(array,itemId) {
@@ -266,56 +204,12 @@
                 }
             }
 
-            function List(newListTitle) {
-                    this.id = uniqueIdService.getUniqueListId();
-                    this.title = newListTitle;
-                    this.todos = []
-            }
-
-            function Todo(todoTitle) {
-                    this.id = uniqueIdService.getUniqueTodoId();
-                    this.title = todoTitle;
-                    this.completed = false;
-                    this.details = '';
-                    this.created = new Date().toDateString();
-            }
-
             return {
                 getItemFromArrayById: getItemFromArrayById,
                 doesItemTitleExists: doesItemTitleExists,
-                List: List,
-                Todo: Todo,
                 returnIndexFromItemId: returnIndexFromItemId
-
             }
-        })
+        });
 
-        .factory('modalService', function ($uibModal) {
-
-            function inputNewTitleModal(data) {
-                var modalInstance = $uibModal.open({
-                    templateUrl: './views/modal/InputNewTitleModal.html',
-                    controller: 'InputNewTitleModalController',
-                    controllerAs: 'ctrl',
-                    resolve: {
-                        data: function () {
-                            return data
-                        }
-                    }
-                });
-
-                modalInstance.result.then(handleNewName(data), handleError);
-                function handleNewName(data) {
-                    return data.cb;
-                }
-                function handleError(err) {
-                    console.log(err);
-                }
-            }
-
-            return {
-                inputNewTitleModal: inputNewTitleModal
-            }
-        })
     })
 ();

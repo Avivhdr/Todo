@@ -19,9 +19,15 @@
 .lineThrough {
     text-decoration: line-through
 }
+.inline{
+    display: inline;
+}
 
 .btn-sm{
  font-size: 15px;
+}
+input[type="text"] {
+    margin-left: 0;
 }
 
 .body, .lists-list{
@@ -42,10 +48,6 @@
     margin-bottom: 5px;
 }
 
-input[type="text"] {
-    margin-left: 0;
-}
-
 input.ng-invalid {
     background-color:pink;
 }
@@ -56,4 +58,8 @@ input.ng-invalid {
 
 .navbar.navbar-default {
     margin: 0;
+}
+
+.paint {
+    background-color: yellow;
 }

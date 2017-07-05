@@ -1,6 +1,8 @@
 <div class="container-fluid">
-    <div class="row">
+    <h1 class="text-danger" ng-if="ctrl.userLists.length < 1"> There are no existing lists </h1>
+    <h3 class="text-danger" ng-if="ctrl.userLists.length < 1"> add a new list in "main" tab </h3>
 
+    <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 " ng-repeat="list in ctrl.userLists">
         <div class="list-display margin-top-10">
             <div class="text-center"><b>{{list.title}}</b></div>
@@ -8,13 +10,15 @@
             <input type="text" class="form-control form-control-sm width-80" ng-model="ctrl.newTodo[$index]"
                    placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo[$index],$index)" />
             <br><br>
-            <div class="todo-in-list" ng-repeat="todo in list.todos">
-                <input type="checkbox" ng-model="todo.completed" ng-change="ctrl.completeTodo()" >
-                <span ng-class="{lineThrough: todo.completed}" ng-dblclick="ctrl.editTodo(todo, $index, $parent.$index)">
-                {{todo.title}} <span class="daysCount">{{todo.daysPassed}}</span></span>
+            <div ng-repeat="todo in list.todos">
+                <input type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()" >
+                <label for="{{todo.id}}">
+                    <span  class="curr-todo" ng-class="{lineThrough: todo.completed}" >{{todo.title}} </span>
+                </label>
+                    <img ng-click="ctrl.openEditTodoModal({todo: todo, currListId: list.id})" src="/img/edit.png" alt="edit" style="height:12px ; width: 12px; cursor: pointer ">
             </div>
             <br>
-            <button class="btn btn-success btn-xs" ng-click="ctrl.renameList({newTitle: list.title, listId: list.id, listIndex: $index})">Rename List</button>
+            <button class="btn btn-success btn-xs" ng-click="ctrl.renameList({newListTitle: list.title, listId: list.id})">Rename List</button>
             <button class="btn btn-danger btn-xs" ng-click="ctrl.deleteList(list.id)" >Delete List</button>
         </div>
     </div>

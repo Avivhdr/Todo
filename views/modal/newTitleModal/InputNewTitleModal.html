@@ -1,0 +1,29 @@
+<div>
+    <div class="modal-header">
+        <h3 ng-if="ctrl.newTitleObj.listId" class="modal-title text-center" id="modal-title"><b>Rename List</b></h3>
+        <h3 ng-if="ctrl.newTitleObj.listId === undefined" class="modal-title text-center" id="modal-title"><b>Name
+            already exist! </b></h3>
+        <h5 ng-if="ctrl.newTitleObj.listId === undefined" class="modal-title text-center" id="modal-title"><b>Choose a
+            new name </b></h5>
+    </div>
+
+    <form name="form">
+        <div class="modal-body" id="modal-body">
+            <label class="inline">
+                <input type="text" name="title" class="form-control form-control-sm width-80"
+                       ng-model="ctrl.newTitleObj.newListTitle" placeholder="choose a new name" required/>
+            </label>
+            <br><br>
+            <!--<div>-->
+                <div class="text-center"ng-show="form.title.$error.required"><b >Enter a new name or cancel</b></div>
+            <!--</div>-->
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary btn-sm" ng-click="ctrl.save()"
+                    ng-disabled="form.title.$dirty && form.title.$invalid"> Save
+            </button>
+            <button class="btn btn-warning btn-sm" type="button" ng-click="ctrl.cancel()">Cancel</button>
+        </div>
+    </form>
+</div>
