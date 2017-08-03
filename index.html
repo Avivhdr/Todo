@@ -1,37 +1,41 @@
 <!DOCTYPE>
 <html lang="en">
-    <head>
-        <title>Todo</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--<link href="./bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="style/style.css" rel="stylesheet">
-    </head>
+<head>
+    <title>Todo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link href="./bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="app/style/style.css" rel="stylesheet">
+</head>
 
-    <body ng-app="myApp">
+<body ng-app="myApp">
 
-        <nav class="navbar navbar-default no-margin-buttom">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                </button>
-                <a class="navbar-brand no-padding-top"><img alt="Brand" src="img/smalllogo.png"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li ui-sref-active="active"><a ui-sref="lists">Main</a></li>
-                    <li ui-sref-active="active"><a ui-sref="block">Multi-List-view</a></li>
-                </ul>
-            </div>
-        </nav>
-        <ui-view></ui-view>
+<nav class="navbar navbar-default no-margin-buttom">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand no-padding-top"><img alt="Brand" src="app/img/smalllogo.png"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li ui-sref-active="active"><a ui-sref="main">Main</a></li>
+            <li ui-sref-active="active"><a ui-sref="multiView">Multi-List-view</a></li>
+        </ul>
+    </div>
+</nav>
+<ui-view></ui-view>
 
 
-        <!--CDN-->
+        <!--CDN  for GitHub Pages-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
         <script src="https://cdn.jsdelivr.net/angular.ui-router/1.0.1/angular-ui-router.min.js"></script>
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.6.4/angular-touch.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -40,23 +44,26 @@
         <!--<script src="./bower_components/jquery/dist/jquery.min.js"></script>-->
         <!--<script src="./bower_components/angular/angular.js"></script>-->
         <!--<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>-->
-        <!--<script src="./bower_components/angular-touch/angular-touch.js"></script>-->
         <!--<script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
         <!--<script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>-->
 
 
-        <script src="myApp.js"></script>
-        <script src="services/serviceModule.js"></script>
-        <script src="services/utilService.js"></script>
-        <script src="routeConfig/routeConfig.js"></script>
-        <script src="views/mainLists/mainListService.js"></script>
-        <script src="views/currListAndMultiViewService.js"></script>
+        <script src="app/myApp.module.js"></script>
+        <script src="app/myApp.route.js"></script>
+        <script src="app/myApp.config.js"></script>
+        <script src="app/myApp.run.js"></script>
+        <script src="app/service.module.js"></script>
 
+        <script src="app/services/localStorage.service.js"></script>
+        <script src="app/services/util.service.js"></script>
+        <script src="app/services/listItemConstructor.js"></script>
+        <script src="app/services/todoItemConstructor.js"></script>
 
-        <script src="views/mainLists/mainListController.js"></script>
-        <script src="views/currList/cuurListController.js"></script>
-        <script src="views/modal/editTodoModal/currTodoModalController.js"></script>
-        <script src="views/modal/newTitleModal/newTitleModalController.js"></script>
-        <script src="views/multiView/multiViewController.js"></script>
+        <script src="app/components/Main.Controller.js"></script>
+        <script src="app/components/list.Controller.js"></script>
+        <script src="app/components/multiView.Controller.js"></script>
+
+        <script src="app/components/modal/editTodo.Modal.js"></script>
+        <script src="app/components/modal/editListTitle.Modal.js"></script>
     </body>
 </html>
