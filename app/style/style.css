@@ -63,3 +63,9 @@ input.ng-invalid {
 .paint {
     background-color: yellow;
 }
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+}

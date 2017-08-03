@@ -1,17 +1,19 @@
 (function () {
     angular.module('myApp')
-
         .factory('editTodoModalService', function ($uibModal) {
 
-            function editTodoModal(todoObj) {
+            function editTodoModal(todoObj,cb) {
                 var modalInstance = $uibModal.open({
                     restrict: "E",
-                    templateUrl: './views/modal/editTodoModal/currTodoModal.html',
-                    controller: 'currTodoModalController',
+                    templateUrl: './app/components/modal/editTodo.Modal.html',
+                    controller: 'EditTodoModalController',
                     controllerAs: 'ctrl',
                     resolve: {
                         todoObj: function () {
-                            return todoObj;
+                            return angular.copy(todoObj);
+                        },
+                        cb: function (){
+                            return cb
                         }
                     }
                 });
@@ -32,19 +34,17 @@
             }
         })
 
-        .controller('currTodoModalController', function (localStorageService, utilService, $uibModalInstance, todoObj) {
+        .controller('EditTodoModalController', function (localStorageService, utilService, $uibModalInstance, todoObj, cb) {
             var ctrl = this;
-            ctrl.tempTodo = angular.fromJson(angular.toJson(todoObj.todo));
             ctrl.todoObj = todoObj;
+            ctrl.todoObj.cb = cb;
 
             ctrl.deleteTodo = function () {
-                ctrl.todoObj.todo = ctrl.tempTodo;
                 ctrl.todoObj.operation = 'delete';
                 $uibModalInstance.close(ctrl.todoObj);
             };
 
             ctrl.save = function () {
-                ctrl.todoObj.todo = ctrl.tempTodo;
                 ctrl.todoObj.operation = 'save';
                 $uibModalInstance.close(ctrl.todoObj);
             };

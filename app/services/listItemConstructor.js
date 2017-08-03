@@ -1,7 +1,17 @@
 (function () {
-    angular.module('serviceModule')
+    angular
+        .module('serviceModule')
+        .factory('listItemConstructor', ListItemConstructor);
 
-    .factory('mainListsService', function (){
+    function ListItemConstructor(){
+
+        var factory = {
+            List: List
+        };
+
+        return factory;
+
+        //////////
 
         function getUniqueListId() {
             return Math.floor(Date.now()/3);
@@ -12,10 +22,6 @@
             this.title = newListTitle;
             this.todos = []
         }
+    }
 
-        return {
-            List: List
-        }
-    });
-})
-();
+})();
