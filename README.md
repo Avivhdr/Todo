@@ -1,7 +1,7 @@
 # Todo
-My First Project
 
-Angularjs to-do list
+Angularjs to-do app
+
 bootstrap styles
 
 For live demo: https://avivhdr.github.io/Todo/
