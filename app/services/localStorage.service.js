@@ -13,14 +13,14 @@
                         "id": 11,
                         "title": "Milk",
                         "completed": false,
-                        "details": "",
+                        "details": "only 9% fat",
                         "created": "Wed May 06 2016"
                     },
                     {
                         "id": 12,
                         "title": "Bread",
                         "completed": false,
-                        "details": "",
+                        "details": "Rye",
                         "created": "Wed May 04 2016"
                     },
                     {
@@ -47,7 +47,7 @@
                         "id": 21,
                         "title": "sun glasses",
                         "completed": true,
-                        "details": "",
+                        "details": "the old ones",
                         "created": "Wed May 06 2016"
                     },
                     {
@@ -61,7 +61,7 @@
                         "id": 23,
                         "title": "towel",
                         "completed": false,
-                        "details": "",
+                        "details": "always bring a towel",
                         "created": "Wed May 07 2016"
                     },
                     {
@@ -81,14 +81,14 @@
                         "id": 31,
                         "title": "call mom",
                         "completed": true,
-                        "details": "",
+                        "details": "ask how is she",
                         "created": "Wed May 06 2016"
                     },
                     {
                         "id": 32,
                         "title": "clean home",
                         "completed": false,
-                        "details": "",
+                        "details": "windows also",
                         "created": "Wed May 04 2016"
                     },
                     {
@@ -102,7 +102,7 @@
                         "id": 34,
                         "title": "pick up mail",
                         "completed": false,
-                        "details": "",
+                        "details": "open from 8:00 to 13:00",
                         "created": "Wed May 09 2016"
                     }
                 ]

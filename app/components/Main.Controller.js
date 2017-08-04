@@ -27,7 +27,7 @@
 
         //////////
 
-        ctrl.openList(ctrl.firstListId); //todo: ?
+        ctrl.openList(ctrl.firstListId);
 
         function openList(listId) {
             if (listId !== undefined) {

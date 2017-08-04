@@ -1,4 +1,4 @@
 (function () {
     angular
-        .module('myApp', ['serviceModule', 'ui.router', 'ui.bootstrap'])
+        .module('myApp', ['serviceModule', 'ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap'])
 })();

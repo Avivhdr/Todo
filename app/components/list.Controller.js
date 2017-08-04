@@ -2,7 +2,30 @@
     angular
         .module('myApp')
         .controller("ListController", ListController)
-        .directive('list', listDirective);
+        .directive('list', listDirective)
+        .controller('TooltipDemoCtrl', function ($scope, $sce) {
+            $scope.dynamicTooltip = 'Hello, World!';
+            $scope.dynamicTooltipText = 'dynamic';
+            $scope.htmlTooltip = $sce.trustAsHtml('I\'ve been made <b>bold</b>!');
+            $scope.placement = {
+                options: [
+                    'top',
+                    'top-left',
+                    'top-right',
+                    'bottom',
+                    'bottom-left',
+                    'bottom-right',
+                    'left',
+                    'left-top',
+                    'left-bottom',
+                    'right',
+                    'right-top',
+                    'right-bottom'
+                ],
+                selected: 'top'
+            };
+        });
+
 
     function listDirective() {
         return {
@@ -104,13 +127,13 @@
         }
     }
 
-
     function listLink(scope, iElement, iAttrs, ctrl) {
-        $('#' + ctrl.listId).addClass("active");// todo: doesn't work when comeback from multi-view
+        $('#' + ctrl.listId).addClass("active");
         scope.$on('$destroy', function () {
             $('#' + ctrl.listId).removeClass("active");
         });
 
     }
+
 })();
 
