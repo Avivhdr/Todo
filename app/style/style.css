@@ -76,3 +76,7 @@ input.ng-invalid {
     background-color: lightslategray;
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
 }
+
+.pac-container {
+    z-index: 10051 !important;
+}

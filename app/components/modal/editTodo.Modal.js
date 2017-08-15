@@ -39,6 +39,10 @@
             ctrl.todoObj = todoObj;
             ctrl.todoObj.cb = cb;
 
+            ctrl.select = function (e){
+                    e.target.setSelectionRange(0, e.target.value.length);
+            };
+
             ctrl.deleteTodo = function () {
                 ctrl.todoObj.operation = 'delete';
                 $uibModalInstance.close(ctrl.todoObj);

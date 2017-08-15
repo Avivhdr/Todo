@@ -1,20 +1,48 @@
 <div class="">
-    <h4><strong>{{ctrl.currList.title}}</strong></h4>
-    <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo)">+</button>
-    <input type="text" class="form-control form-control-sm width-80" ng-model="ctrl.newTodo"
-           placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo)"/>
-    <br><br>
-    <div ng-repeat="todo in ctrl.currList.todos track by todo.id ">
-        <span role="button" class="glyphicon glyphicon-remove-sign" ng-click="ctrl.deleteTodo($index, ctrl.currList.id)"></span>
-        <span role="button" class="glyphicon glyphicon-pencil" ng-click="ctrl.openEditTodoModal({todo: todo, currListId: ctrl.currList.id})"></span>
-        <input  type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()">
-        <label for="{{todo.id}}">
-            <span  uib-tooltip="{{todo.details}}" tooltip-placement="right" tooltip-class="customClass" class="curr-todo" ng-class="{lineThrough: todo.completed}" >{{todo.title}} </span>
-        </label>
-
+    <h2 class="text-center bg-primary"><b>{{ctrl.currList.title}}</b></h2>
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group">
+                        <span class="input-group-btn">
+                             <button class="btn btn-default" type="button"
+                                     ng-click="ctrl.addNewTodo(ctrl.newTodo)">Add</button>
+                        </span>
+                <input type="text" class="form-control width-80" ng-model='ctrl.newTodo'
+                       placeholder="I need to..." ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo)"/>
+            </div>
+        </div>
     </div>
+
+    <br><br>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Edit</th>
+            <th>Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="todo in ctrl.currList.todos track by todo.id ">
+            <td><input type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()">
+                <label for="{{todo.id}}">
+                    <span uib-tooltip="{{todo.details}}" tooltip-placement="right" tooltip-class="customClass"
+                          class="curr-todo" ng-class="{lineThrough: todo.completed}">{{todo.title}} </span>
+                </label></td>
+            <td><span role="button" class="glyphicon glyphicon-pencil"
+                      ng-click="ctrl.openEditTodoModal({todo: todo, currListId: ctrl.currList.id})"></span></td>
+            <td><span role="button" class="glyphicon glyphicon-remove-sign"
+                      ng-click="ctrl.deleteTodo($index, ctrl.currList.id)"></span></td>
+        </tr>
+        </tbody>
+    </table>
+
     <hr>
-        <button class="btn btn-success" ng-click="ctrl.renameList({newListTitle: ctrl.currList.title, listId: ctrl.currList.id})">Rename List</button>
-        <button class="btn btn-danger" ng-click="ctrl.deleteList()" >Delete List</button>
+    <button class="btn btn-success"
+            ng-click="ctrl.renameList({newListTitle: ctrl.currList.title, listId: ctrl.currList.id})">Rename List
+    </button>
+    <button class="btn btn-danger" ng-click="ctrl.deleteList()">Delete List</button>
     <hr>
 </div>

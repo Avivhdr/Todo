@@ -2,20 +2,21 @@
     <div class="row ">
         <div class="col-xs-12 col-sm-5 col-lg-3 lists-list ">
             <br>
-            <div class="row">
-                    <div class="col-xs-9 no-padding-right">
-                        <input type="text" class="form-control form-control-sm" ng-model='ctrl.newListTitle'
-                               placeholder="Add a new list:"
-                               ng-keyup="$event.keyCode == 13 && ctrl.addNewList({newListTitle: ctrl.newListTitle})" />
-                    </div>
 
-                    <div class="col-xs-3 no-padding-left">
-                        <button class="btn btn-default btn-sm"
-                                ng-click="ctrl.addNewList({newListTitle: ctrl.newListTitle})">Add list
-                        </button>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                             <button class="btn btn-default" type="button"
+                                     ng-click="ctrl.addNewList({newListTitle: ctrl.newListTitle})">Add</button>
+                        </span>
+                        <input type="text" class="form-control width-80" ng-model='ctrl.newListTitle'
+                               placeholder="Add a new list.."
+                               ng-keyup="$event.keyCode == 13 && ctrl.addNewList({newListTitle: ctrl.newListTitle})"/>
                     </div>
+                </div>
             </div>
-            <hr>
+            <br><br>
             <h3 class="text-center text-danger" ng-if="ctrl.userLists.length < 1"> There are no existing lists </h3>
 
             <div ng-repeat="list in ctrl.userLists">

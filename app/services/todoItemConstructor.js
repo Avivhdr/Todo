@@ -20,6 +20,7 @@
         function Todo(todoTitle) {
             this.id = getUniqueTodoId();
             this.title = todoTitle;
+            this.location = '';
             this.completed = false;
             this.details = '';
             this.created = new Date().toDateString();

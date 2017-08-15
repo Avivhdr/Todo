@@ -34,8 +34,14 @@
         .controller('InputNewTitleModalController', function ($uibModalInstance, newTitleObj) {
             var ctrl = this;
             ctrl.newTitleObj = newTitleObj;
+            ctrl.select = select;
             ctrl.save = $uibModalInstance.close;
             ctrl.cancel = $uibModalInstance.dismiss('cancel');
+
+            /////////
+            function select (e){
+                e.target.setSelectionRange(0, e.target.value.length);
+            }
         })
 
 })();
