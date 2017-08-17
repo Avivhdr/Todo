@@ -14,11 +14,10 @@
         }
     }
 
-    MainController.$inject = ['localStorageService', 'listItemConstructor', 'utilService', 'newTitleModalService', '$state'];
+    MainController.$inject = ['$http', 'localStorageService', 'listItemConstructor', 'utilService', 'newTitleModalService', '$state'];
 
-    function MainController(localStorageService, listItemConstructor, utilService, newTitleModalService, $state) {
+    function MainController($http, localStorageService, listItemConstructor, utilService, newTitleModalService, $state) {
         var ctrl = this;
-
         ctrl.newListTitle = '';
         ctrl.userLists = localStorageService.getStorageSync('lists');
         ctrl.firstListId = (ctrl.userLists[0] !== undefined) ? ctrl.userLists[0].id : undefined;

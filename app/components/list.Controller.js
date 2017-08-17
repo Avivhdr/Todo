@@ -15,15 +15,14 @@
         }
     }
 
-    ListController.$inject = ['editTodoModalService', 'localStorageService', 'todoItemConstructor', 'newTitleModalService', 'utilService', '$state', '$stateParams'];
+    ListController.$inject = ['$scope', '$http', 'editTodoModalService', 'localStorageService', 'todoItemConstructor', 'newTitleModalService', 'utilService', '$state', '$stateParams'];
 
-    function ListController(editTodoModalService, localStorageService, todoItemConstructor, newTitleModalService, utilService, $state, $stateParams) {
+    function ListController($apply, $http, editTodoModalService, localStorageService, todoItemConstructor, newTitleModalService, utilService, $state, $stateParams) {
         var ctrl = this;
         ctrl.newTodo = '';
         ctrl.listId = Number($stateParams.listId);
-        ctrl.userLists = localStorageService.getStorageSync('lists');
+                ctrl.userLists = localStorageService.getStorageSync('lists');
         ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, ctrl.listId);
-
         ctrl.addNewTodo = addNewTodo;
         ctrl.completeTodo = completeTodo;
         ctrl.openEditTodoModal = openEditTodoModal;
@@ -31,8 +30,9 @@
         ctrl.renameList = renameList;
         ctrl.deleteList = deleteList;
 
-
         //////////
+
+
 
         function addNewTodo(todoTitle) {
             if (todoTitle !== '') {
@@ -95,6 +95,7 @@
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
             }
         }
+
         function deleteList() {
             var listIndex = ctrl.userLists.findIndex(function (list) {
                 return list.id === ctrl.currList.id

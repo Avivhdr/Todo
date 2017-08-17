@@ -1,4 +1,5 @@
 <div class="todoModel">
+    {{ctrl.todoObj.todo.location}}
     <div class="modal-header">
         <h3 class="modal-title text-center bg-primary" id="modal-title"><b>Edit Item</b></h3>
     </div>
@@ -9,7 +10,10 @@
         <br><br>
 
         <h4><b>location:</b></h4>
+
         <b><i>{{ctrl.todoObj.todo.location.location}}</i></b>
+        <br>
+        <a href="{{ctrl.todoObj.todo.location.url}}" target="_blank">show on Google Maps</a>
         <input class="form-control high-z-index" google-places placeholder="Google Places..." location="ctrl.todoObj.todo.location">
         <br><br>
 

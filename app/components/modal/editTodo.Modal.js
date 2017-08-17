@@ -1,8 +1,9 @@
 (function () {
     angular.module('myApp')
+        .controller('EditTodoModalController', EditTodoModalController)
         .factory('editTodoModalService', function ($uibModal) {
 
-            function editTodoModal(todoObj,cb) {
+            function editTodoModal(todoObj, cb) {
                 var modalInstance = $uibModal.open({
                     restrict: "E",
                     templateUrl: './app/components/modal/editTodo.Modal.html',
@@ -12,7 +13,7 @@
                         todoObj: function () {
                             return angular.copy(todoObj);
                         },
-                        cb: function (){
+                        cb: function () {
                             return cb
                         }
                     }
@@ -32,29 +33,35 @@
             return {
                 editTodoModal: editTodoModal
             }
-        })
+        });
 
-        .controller('EditTodoModalController', function (localStorageService, utilService, $uibModalInstance, todoObj, cb) {
-            var ctrl = this;
-            ctrl.todoObj = todoObj;
-            ctrl.todoObj.cb = cb;
+    EditTodoModalController.$inject = ['$scope', '$uibModalInstance', 'todoObj', 'cb'];
 
-            ctrl.select = function (e){
-                    e.target.setSelectionRange(0, e.target.value.length);
-            };
+    function EditTodoModalController($scope, $uibModalInstance, todoObj, cb) {
 
-            ctrl.deleteTodo = function () {
-                ctrl.todoObj.operation = 'delete';
-                $uibModalInstance.close(ctrl.todoObj);
-            };
+        var ctrl = this;
+        ctrl.todoObj = todoObj;
+        ctrl.todoObj.cb = cb;
 
-            ctrl.save = function () {
-                ctrl.todoObj.operation = 'save';
-                $uibModalInstance.close(ctrl.todoObj);
-            };
+        ctrl.select = function (e) {
+            e.target.setSelectionRange(0, e.target.value.length);
+        };
 
-            ctrl.cancel = function () {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
+        ctrl.deleteTodo = function () {
+            ctrl.todoObj.operation = 'delete';
+            $uibModalInstance.close(ctrl.todoObj);
+        };
+
+        ctrl.save = function () {
+            console.log($scope);
+            debugger;
+            ctrl.todoObj.operation = 'save';
+            $uibModalInstance.close(ctrl.todoObj);
+        };
+
+        ctrl.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    }
+
 })();
