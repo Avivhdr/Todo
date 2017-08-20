@@ -1,5 +1,4 @@
-<div class="">
-    {{ctrl.quotes|json}}
+<div >
     <h2 class="text-center bg-primary"><b>{{ctrl.currList.title}}</b></h2>
     <br>
     <div class="row">
@@ -14,6 +13,9 @@
             </div>
         </div>
     </div>
+    <br>
+    <input type="text" class="form-control width-40" ng-model="search.title"
+           placeholder="search to-do.." />
 
     <br><br>
 
@@ -26,7 +28,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="todo in ctrl.currList.todos track by todo.id ">
+        <tr ng-repeat="todo in ctrl.currList.todos | filter: search">
             <td><input type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()">
                 <label for="{{todo.id}}">
                     <span uib-tooltip="{{todo.details}}" tooltip-placement="right" tooltip-class="customClass"

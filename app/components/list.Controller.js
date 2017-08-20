@@ -15,13 +15,13 @@
         }
     }
 
-    ListController.$inject = ['$scope', '$http', 'editTodoModalService', 'localStorageService', 'todoItemConstructor', 'newTitleModalService', 'utilService', '$state', '$stateParams'];
+    ListController.$inject = ['editTodoModalService', 'localStorageService', 'todoItemConstructor', 'newTitleModalService', 'utilService', '$state', '$stateParams'];
 
-    function ListController($apply, $http, editTodoModalService, localStorageService, todoItemConstructor, newTitleModalService, utilService, $state, $stateParams) {
+    function ListController(editTodoModalService, localStorageService, todoItemConstructor, newTitleModalService, utilService, $state, $stateParams) {
         var ctrl = this;
         ctrl.newTodo = '';
         ctrl.listId = Number($stateParams.listId);
-                ctrl.userLists = localStorageService.getStorageSync('lists');
+        ctrl.userLists = localStorageService.getStorageSync('lists');
         ctrl.currList = utilService.getItemFromArrayById(ctrl.userLists, ctrl.listId);
         ctrl.addNewTodo = addNewTodo;
         ctrl.completeTodo = completeTodo;

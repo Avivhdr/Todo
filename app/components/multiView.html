@@ -1,4 +1,8 @@
 <div class="container-fluid">
+    <br>
+    <input type="text" class="form-control width-40" ng-model="search.title"
+           placeholder="search to-do.." />
+
     <h1 class="text-danger" ng-if="ctrl.userLists.length < 1"> There are no existing lists </h1>
     <h3 class="text-danger" ng-if="ctrl.userLists.length < 1"> add a new list in "main" tab </h3>
 
@@ -11,7 +15,7 @@
             <input type="text" class="form-control form-control-sm width-80" ng-model="ctrl.newTodo[$index]"
                    placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo[$index],$index)" />
             <br><br>
-            <div ng-repeat="todo in list.todos track by todo.id">
+            <div ng-repeat="todo in list.todos | filter: search ">
                 <span role="button" class="glyphicon glyphicon-remove-sign" ng-click="ctrl.deleteTodo($index, list.id)"></span>
                 <span role="button" class="glyphicon glyphicon-pencil" ng-click="ctrl.openEditTodoModal({todo: todo, currListId: list.id})"></span>
                 <input type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()" >

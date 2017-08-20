@@ -43,6 +43,34 @@
         ctrl.todoObj = todoObj;
         ctrl.todoObj.cb = cb;
 
+        // date & time picker
+        {
+            $scope.dt = (ctrl.todoObj.todo.dueDate)? new Date(ctrl.todoObj.todo.dueDate) : null;
+
+            $scope.open = function() {
+                $scope.status.opened = true;
+            };
+
+            $scope.status = {
+                opened: false
+            };
+
+            $scope.getDayClass = function(date, mode) {
+                if (mode === 'day') {
+                    var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+                    for (var i=0;i<$scope.events.length;i++){
+                        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+                        if (dayToCheck === currentDay) {
+                            return $scope.events[i].status;
+                        }
+                    }
+                }
+                return '';
+            };
+        }
+
         ctrl.select = function (e) {
             e.target.setSelectionRange(0, e.target.value.length);
         };
@@ -53,8 +81,7 @@
         };
 
         ctrl.save = function () {
-            console.log($scope);
-            debugger;
+            ctrl.todoObj.todo.dueDate = $scope.dt;
             ctrl.todoObj.operation = 'save';
             $uibModalInstance.close(ctrl.todoObj);
         };

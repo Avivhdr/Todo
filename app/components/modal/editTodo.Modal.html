@@ -1,27 +1,42 @@
-<div class="todoModel">
-    {{ctrl.todoObj.todo.location}}
+<div>
     <div class="modal-header">
         <h3 class="modal-title text-center bg-primary" id="modal-title"><b>Edit Item</b></h3>
     </div>
 
     <div class="modal-body" id="modal-body">
         <h4><b>Title:</b></h4>
-        <input class="form-control form-control-sm" type="text" ng-model="ctrl.todoObj.todo.title" ng-click="ctrl.select($event)">
+        <input class="form-control form-control-sm" type="text" ng-model="ctrl.todoObj.todo.title"
+               ng-click="ctrl.select($event)">
         <br><br>
 
         <h4><b>location:</b></h4>
 
         <b><i>{{ctrl.todoObj.todo.location.location}}</i></b>
-        <br>
-        <a href="{{ctrl.todoObj.todo.location.url}}" target="_blank">show on Google Maps</a>
-        <input class="form-control high-z-index" google-places placeholder="Google Places..." location="ctrl.todoObj.todo.location">
+        <a ng-if="ctrl.todoObj.todo.location.url" href="{{ctrl.todoObj.todo.location.url}}" target="_blank">show on
+            Google Maps</a>
+        <input class="form-control high-z-index" google-places placeholder="Google Places..."
+               location="ctrl.todoObj.todo.location">
         <br><br>
 
         <h4><b>Details:</b></h4>
         <textarea class="form-control" ng-model="ctrl.todoObj.todo.details"></textarea>
         <br><br>
 
-        <b>Created on:</b> <br>{{ctrl.todoObj.todo.created}}
+        <h4><b>Date & time:</b></h4>
+        <p class="input-group">
+            <input type="text" class="form-control" readonly uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt"
+                   is-open="status.opened" ng-required="true"
+                   close-text="Close"/>
+            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open()">
+                                <i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+        </p>
+        <div uib-timepicker ng-model="dt" hour-step="1" minute-step="5" show-meridian="true"></div>
+        <br><br>
+
+        <b>Created on:</b> <br>
+        {{ctrl.todoObj.todo.created}}
     </div>
 
     <div class="modal-footer">
