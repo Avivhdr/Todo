@@ -1,33 +1,40 @@
-<div class="container-fluid">
+<div class="animated slideInRight">
     <br>
     <input type="text" class="form-control width-40" ng-model="search.title"
-           placeholder="search to-do.." />
+           placeholder="search to-do.."/>
 
     <h1 class="text-danger" ng-if="ctrl.userLists.length < 1"> There are no existing lists </h1>
     <h3 class="text-danger" ng-if="ctrl.userLists.length < 1"> add a new list in "main" tab </h3>
 
-    <div class="row">
-        <div class="flex-container">
-    <div  ng-repeat="list in ctrl.userLists">
-        <div class="list-display margin-top-10">
-            <div class="text-center"><b>{{list.title}}</b></div>
-            <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo[$index],$index)">+</button>
-            <input type="text" class="form-control form-control-sm width-80" ng-model="ctrl.newTodo[$index]"
-                   placeholder="Add a new to-do:" ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo[$index],$index)" />
-            <br><br>
-            <div ng-repeat="todo in list.todos | filter: search ">
-                <span role="button" class="glyphicon glyphicon-remove-sign" ng-click="ctrl.deleteTodo($index, list.id)"></span>
-                <span role="button" class="glyphicon glyphicon-pencil" ng-click="ctrl.openEditTodoModal({todo: todo, currListId: list.id})"></span>
-                <input type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()" >
-                <label for="{{todo.id}}">
-                    <span  uib-tooltip="{{todo.details}}" tooltip-placement="right" tooltip-class="customClass" class="curr-todo" ng-class="{lineThrough: todo.completed}" >{{todo.title}} </span>
-                </label>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-3 list-display "
+                 ng-repeat="list in ctrl.userLists">
+                <div class="text-center"><b>{{list.title}}</b></div>
+                <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo[$index],$index)">+
+                </button>
+                <input type="text" class="form-control width-80" ng-model="ctrl.newTodo[$index]"
+                       placeholder="Add a new to-do:"
+                       ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo[$index],$index)"/>
+                <br><br>
+                <div ng-repeat="todo in list.todos | filter: search ">
+                    <span role="button" class="glyphicon glyphicon-remove-sign"
+                          ng-click="ctrl.deleteTodo($index, list.id)"></span>
+                    <span role="button" class="glyphicon glyphicon-pencil"
+                          ng-click="ctrl.openEditTodoModal({todo: todo, firstListId: list.id})"></span>
+                    <input type="checkbox" id="{{todo.id}}" ng-model="todo.completed"
+                           ng-change="ctrl.completeTodo()">
+                    <label for="{{todo.id}}">
+                        <span uib-tooltip="{{todo.details}}" tooltip-placement="right" tooltip-class="customClass"
+                              class="curr-todo" ng-class="{lineThrough: todo.completed}">{{todo.title}} </span>
+                    </label>
+                </div>
+                <br>
+                <button class="btn btn-success btn-xs"
+                        ng-click="ctrl.renameList({newListTitle: list.title, listId: list.id})">Rename List
+                </button>
+                <button class="btn btn-danger btn-xs" ng-click="ctrl.deleteList(list.id)">Delete List</button>
             </div>
-            <br>
-            <button class="btn btn-success btn-xs" ng-click="ctrl.renameList({newListTitle: list.title, listId: list.id})">Rename List</button>
-            <button class="btn btn-danger btn-xs" ng-click="ctrl.deleteList(list.id)" >Delete List</button>
-        </div>
-    </div>
         </div>
     </div>
 </div>

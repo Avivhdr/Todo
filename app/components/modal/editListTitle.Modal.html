@@ -8,8 +8,8 @@
     <form name="form">
         <div class="modal-body" id="modal-body">
             <label class="inline">
-                <input type="text" name="title" class="form-control form-control-sm"
-                       ng-model="ctrl.newTitleObj.newListTitle" placeholder="choose a new name"  ng-click="ctrl.select($event)"required/>
+                <input type="text" name="title" class="form-control"
+                       ng-model="ctrl.newTitleObj.newListTitle" placeholder="choose a new name"  ng-click="ctrl.select($event)" required/>
             </label>
             <br><br>
                 <div class="text-center" ng-show="form.title.$error.required"><br><b>Enter a new name or cancel</b></div>

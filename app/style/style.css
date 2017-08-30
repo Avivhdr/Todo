@@ -1,3 +1,6 @@
+body {
+    background-image: url("../img/1.jpg");
+}
 .no-padding-top{
     padding-top:0
 }
@@ -18,8 +21,8 @@
     width: 40%;
 }
 
-.margin-top-10{
-    margin-top: 10px;
+.border-radius-4{
+    border-radius: 4px;
 }
 .lineThrough {
     text-decoration: line-through
@@ -35,22 +38,21 @@ input[type="text"] {
     margin-left: 0;
 }
 
-.body, .lists-list{
-    height: calc(100% - 55px)
-}
-
 .lists-list {
-    background-color: lightgrey;
+    background-color: #f0f0f0;
 }
+.row {margin: 1.5em -7.5px}
+[class*="col-"] {padding: 0 7.5px;}
 
 .list-display {
-    background-color: #ECEBE3;
-    border: 1px solid lightgrey;
+    background-color: #f0f0f0;
+    /*background-color: indianred;*/
+    border: 2px solid lightgrey;
     padding: 5px;
-    border-radius: 3px;
-    box-shadow: 0 0 4px lightgray;
-    margin-right: 10px;
-    margin-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0 0 9px lightgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 input.ng-invalid {
@@ -69,11 +71,6 @@ input.ng-invalid {
     background-color: yellow;
 }
 
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap
-}
 
 .tooltip.customClass .tooltip-inner {
 /*.tooltip.customClass {*/
@@ -85,3 +82,4 @@ input.ng-invalid {
 .pac-container {
     z-index: 10051 !important;
 }
+

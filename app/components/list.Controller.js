@@ -58,7 +58,7 @@
         }
 
         function handleEditedTodo(todoObj) {
-            var listIndex = utilService.returnIndexFromItemId(ctrl.userLists, todoObj.currListId);
+            var listIndex = utilService.returnIndexFromItemId(ctrl.userLists, todoObj.firstListId);
             var todoIndex = utilService.returnIndexFromItemId(ctrl.currList.todos, todoObj.todo.id);
             switch (todoObj.operation) {
                 case 'delete':

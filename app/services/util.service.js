@@ -8,7 +8,8 @@
         var factory = {
             getItemFromArrayById: getItemFromArrayById,
             doesItemTitleExists: doesItemTitleExists,
-            returnIndexFromItemId: returnIndexFromItemId
+            returnIndexFromItemId: returnIndexFromItemId,
+            calcDates:calcDates
         };
 
         return factory;
@@ -39,6 +40,13 @@
             }
         }
 
+        function calcDates(date){
+            var one_day=1000*60*60*24;
+            var date1 = Date.parse(date);
+            var date2 = Date.now();
+            var difference_ms = date2 - date1;
+            return Math.round(difference_ms/one_day);
+        }
 
     }
 

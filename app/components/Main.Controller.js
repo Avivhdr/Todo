@@ -4,8 +4,8 @@
         .controller('MainController', MainController)
         .component('main', mainComponent());
 
-    function mainComponent(){
-        return{
+    function mainComponent() {
+        return {
             replace: true,
             restrict: 'E',
             templateUrl: './app/components/main.html',
@@ -14,9 +14,10 @@
         }
     }
 
-    MainController.$inject = ['$http', 'localStorageService', 'listItemConstructor', 'utilService', 'newTitleModalService', '$state'];
+    MainController.$inject = ['localStorageService', 'listItemConstructor', 'utilService', 'newTitleModalService', '$state'];
 
-    function MainController($http, localStorageService, listItemConstructor, utilService, newTitleModalService, $state) {
+    function MainController(localStorageService, listItemConstructor, utilService, newTitleModalService, $state) {
+
         var ctrl = this;
         ctrl.newListTitle = '';
         ctrl.userLists = localStorageService.getStorageSync('lists');
@@ -29,8 +30,10 @@
         ctrl.openList(ctrl.firstListId);
 
         function openList(listId) {
-            if (listId !== undefined) {
+            if (listId !== undefined && listId !== ctrl.currListId) {
+                window.location='#list';
                 $state.go('main.list', {listId: listId});
+                ctrl.currListId = listId;
             }
         }
 
