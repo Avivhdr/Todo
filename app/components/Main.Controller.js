@@ -25,9 +25,9 @@
         ctrl.openList = openList;
         ctrl.addNewList = addNewList;
 
-        //////////
-
         ctrl.openList(ctrl.firstListId);
+
+        //////////
 
         function openList(listId) {
             if (listId !== undefined && listId !== ctrl.currListId) {
