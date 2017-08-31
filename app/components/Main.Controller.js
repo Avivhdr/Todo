@@ -30,9 +30,10 @@
         //////////
 
         function openList(listId) {
+            // debugger;
             if (listId !== undefined && listId !== ctrl.currListId) {
-                window.location='#list';
                 $state.go('main.list', {listId: listId});
+                window.location='#list';
                 ctrl.currListId = listId;
             }
         }
