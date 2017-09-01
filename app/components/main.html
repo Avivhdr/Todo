@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row ">
         <div class="col-xs-12 col-lg-3">
-            <div class="animated slideInLeft list-display">
+            <div class="animated slideInLeft list-container">
                 <br>
                 <div class="input-group">
                         <span class="input-group-btn">
@@ -16,7 +16,7 @@
                 <h3 class="text-center text-danger" ng-if="ctrl.userLists.length < 1"> Create a list.. </h3>
 
                 <div ng-repeat="list in ctrl.userLists">
-                    <button type="button" id="{{list.id}}" class="btn btn-primary btn-block text-left"
+                    <button type="button" id="{{list.id}}" class="Aclonica font-size-md btn btn-primary btn-block text-left"
                             ng-click="ctrl.openList(list.id)">{{list.title}}
                     </button>
                 </div>

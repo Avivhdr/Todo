@@ -16,7 +16,7 @@
                         "completed": false,
                         "details": "only 9% fat",
                         "dueDate": '',
-                        "created": "Wed May 06 2016"
+                        "created": "Wed August 26 2017"
                     },
                     {
                         "id": 12,
@@ -25,7 +25,7 @@
                         "completed": false,
                         "details": "Rye",
                         "dueDate": '',
-                        "created": "Wed May 04 2016"
+                        "created": "Wed August 24 2017"
                     },
                     {
                         "id": 13,
@@ -34,58 +34,58 @@
                         "completed": false,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed May 07 2016"
+                        "created": "Wed August 27 2017"
                     },
                     {
                         "id": 14,
-                        "title": "mayonnaise",
+                        "title": "Mayonnaise",
                         "location": '',
                         "completed": false,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed May 09 2016"
+                        "created": "Wed August 29 2017"
                     }
                 ]
             },
             {
                 "id": 2,
-                "title": "Packing for trip",
+                "title": "Color Example",
                 "todos": [
                     {
                         "id": 21,
-                        "title": "sun glasses",
+                        "title": "First 10 days",
                         "location": '',
-                        "completed": true,
+                        "completed": false,
                         "details": "the old ones",
                         "dueDate": '',
-                        "created": "Wed May 06 2016"
+                        "created": "Wed September 01 2017"
                     },
                     {
                         "id": 22,
-                        "title": "swim pants",
+                        "title": "Over 10 days",
                         "location": '',
                         "completed": false,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed May 04 2016"
+                        "created": "Wed August 27 2017"
                     },
                     {
                         "id": 23,
-                        "title": "towel",
+                        "title": "Over 20 days",
                         "location": '',
                         "completed": false,
                         "details": "always bring a towel",
                         "dueDate": '',
-                        "created": "Wed May 07 2016"
+                        "created": "Wed August 17 2017"
                     },
                     {
                         "id": 24,
-                        "title": "book",
+                        "title": "Over 30 days",
                         "location": '',
                         "completed": false,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed May 09 2016"
+                        "created": "Wed August 01 2017"
                     }
                 ]
             },
@@ -100,7 +100,7 @@
                         "completed": true,
                         "details": "ask how is she",
                         "dueDate": '',
-                        "created": "Wed May 06 2016"
+                        "created": "Wed August 26 2017"
                     },
                     {
                         "id": 32,
@@ -109,7 +109,7 @@
                         "completed": false,
                         "details": "windows also",
                         "dueDate": '',
-                        "created": "Wed May 04 2016"
+                        "created": "Wed August 24 2017"
                     },
                     {
                         "id": 33,
@@ -118,7 +118,7 @@
                         "completed": false,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed May 07 2016"
+                        "created": "Wed August 27 2017"
                     },
                     {
                         "id": 34,
@@ -127,7 +127,7 @@
                         "completed": false,
                         "details": "open from 8:00 to 13:00",
                         "dueDate": '',
-                        "created": "Wed May 09 2016"
+                        "created": "Wed August 29 2017"
                     }
                 ]
             },
@@ -142,7 +142,7 @@
                         "completed": true,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed June 06 2016"
+                        "created": "Wed June 26 2017"
                     },
                     {
                         "id": 42,
@@ -151,7 +151,7 @@
                         "completed": false,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed June 14 2016"
+                        "created": "Wed June 14 2017"
                     },
                     {
                         "id": 43,
@@ -160,7 +160,7 @@
                         "completed": true,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed June 26 2016"
+                        "created": "Wed June 26 2017"
                     },
                     {
                         "id": 44,
@@ -169,7 +169,7 @@
                         "completed": false,
                         "details": "Season 2",
                         "dueDate": '',
-                        "created": "Wed June 04 2016"
+                        "created": "Wed June 04 2017"
                     }
                 ]
             }

@@ -1,24 +1,24 @@
 <div>
     <br>
-    <div ng-if="ctrl.userLists.length < 1" class="list-display">
-        <h1 class="text-danger" > There are no existing lists </h1>
-        <h3 class="text-danger" > add a new list in "Home" tab </h3>
+    <div ng-if="ctrl.userLists.length < 1" class="list-container">
+        <h1 class="text-danger"> There are no existing lists </h1>
+        <h3 class="text-danger"> add a new list in "Home" tab </h3>
     </div>
 
     <div class="container-fluid">
-    <input ng-if="ctrl.userLists.length >=1 " type="text" class="form-control width-40" ng-model="search.title"
-           placeholder="search to-do.."/>
+        <input ng-if="ctrl.userLists.length >=1 " type="text" class="form-control width-40" ng-model="search.title"
+               placeholder="search to-do.."/>
         <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-3 list-display animated bounceIn"
+            <div class="col-sm-12 col-md-4 col-lg-3 list-container"
                  ng-repeat="list in ctrl.userLists">
-                <div class="text-center"><b>{{list.title}}</b></div>
+                <h3 class="bg-list-name text-center border-radius-4 padding-5 Aclonica">{{list.title}}</h3>
                 <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo[$index],$index)">+
                 </button>
                 <input type="text" class="form-control width-80" ng-model="ctrl.newTodo[$index]"
                        placeholder="Add a new to-do:"
                        ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo[$index],$index)"/>
                 <br><br>
-                <div ng-repeat="todo in list.todos | filter: search ">
+                <div on-repeat-done ng-repeat="todo in list.todos | orderBy: 'completed' | filter: search ">
                     <span role="button" class="glyphicon glyphicon-remove-sign"
                           ng-click="ctrl.deleteTodo($index, list.id)"></span>
                     <span role="button" class="glyphicon glyphicon-pencil"
@@ -27,14 +27,15 @@
                            ng-change="ctrl.completeTodo()">
                     <label for="{{todo.id}}">
                         <span uib-tooltip="{{todo.details}}" tooltip-placement="right" tooltip-class="customClass"
-                              class="curr-todo" ng-class="{lineThrough: todo.completed}">{{todo.title}} </span>
+                              class="Aclonica font-size-md"
+                              ng-class="{lineThrough: todo.completed}">{{todo.title}} </span>
                     </label>
                 </div>
                 <br>
-                <button class="btn btn-success btn-xs"
+                <button class="btn btn-default btn-xs"
                         ng-click="ctrl.renameList({newListTitle: list.title, listId: list.id})">Rename List
                 </button>
-                <button class="btn btn-danger btn-xs" ng-click="ctrl.deleteList(list.id)">Delete List</button>
+                <button class="btn btn-danger btn-xs" ng-click="ctrl.openConfirmDeleteModal(list.id)">Delete List</button>
             </div>
         </div>
     </div>

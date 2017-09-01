@@ -1,6 +1,5 @@
-<div class="animated slideInRight list-display " >
-    <h2 class="text-center bg-primary border-radius-4"><b>{{ctrl.currList.title}}</b></h2>
-    <br>
+<div class="animated slideInRight list-container ">
+    <h2 class="bg-list-name text-center border-radius-4 padding-5 Aclonica"><b>{{ctrl.currList.title}}</b></h2>
     <div class="row">
         <div class="col-xs-12">
             <div class="input-group">
@@ -13,26 +12,24 @@
             </div>
         </div>
     </div>
-    <br>
     <input type="text" class="form-control width-40" ng-model="search.title"
-           placeholder="search to-do.." />
-
-    <br><br>
+           placeholder="search to-do.."/>
 
     <table class="table table-hover">
         <thead>
         <tr>
             <th>Title</th>
             <th>Edit</th>
-            <th>Title</th>
+            <th>Delete</th>
         </tr>
         </thead>
-        <tbody>
-        <tr ng-repeat="todo in ctrl.currList.todos | filter: search">
+        <tbody class="example-animate-container">
+        <tr class="animate-repeat" on-repeat-done
+            ng-repeat="todo in ctrl.currList.todos | orderBy: 'completed' | filter: search">
             <td><input type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()">
                 <label for="{{todo.id}}">
                     <span uib-tooltip="{{todo.details}}" tooltip-placement="right" tooltip-class="customClass"
-                          class="curr-todo"  ng-class="{lineThrough: todo.completed}">{{todo.title}} </span>
+                          class="Aclonica font-size-md" ng-class="{lineThrough: todo.completed}">  {{todo.title}}</span>
                 </label></td>
             <td><span role="button" class="glyphicon glyphicon-pencil"
                       ng-click="ctrl.openEditTodoModal({todo: todo, firstListId: ctrl.currList.id})"></span></td>
@@ -43,9 +40,9 @@
     </table>
 
     <hr>
-    <button class="btn btn-success"
+    <button class="btn btn-default"
             ng-click="ctrl.renameList({newListTitle: ctrl.currList.title, listId: ctrl.currList.id})">Rename List
     </button>
-    <button class="btn btn-danger" ng-click="ctrl.deleteList()">Delete List</button>
+    <button class="btn btn-danger" ng-click="ctrl.openConfirmDeleteModal()">Delete List</button>
     <hr>
 </div>

@@ -30,7 +30,6 @@
         //////////
 
         function openList(listId) {
-            // debugger;
             if (listId !== undefined && listId !== ctrl.currListId) {
                 $state.go('main.list', {listId: listId});
                 window.location='#list';

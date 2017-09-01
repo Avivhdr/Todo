@@ -10,6 +10,9 @@ body {
 .no-padding-right{
     padding-right: 0;
 }
+.padding-5{
+    padding: 5px;
+}
 .full-height{
     height: 100%;
 }
@@ -44,9 +47,8 @@ input[type="text"] {
 .row {margin: 1.5em -7.5px}
 [class*="col-"] {padding: 0 7.5px;}
 
-.list-display {
+.list-container {
     background-color: #f0f0f0;
-    /*background-color: indianred;*/
     border: 2px solid lightgrey;
     padding: 5px;
     border-radius: 10px;
@@ -83,3 +85,27 @@ input.ng-invalid {
     z-index: 10051 !important;
 }
 
+.Aclonica{
+    font-family: 'Aclonica',sans-serif;
+}
+
+.font-size-md{
+    font-size: 1.1em;
+}
+
+.level1{
+    color: darkorange;
+}
+
+.level2{
+    color: darkred;
+}
+
+.level3 {
+    background-color: firebrick;
+    color: white;
+}
+
+.bg-list-name{
+    background-color: #989e9c;
+}

@@ -1,18 +1,22 @@
 <div>
     <div class="modal-header">
-        <h3 ng-if="ctrl.newTitleObj.listId" class="modal-title text-center bg-primary" id="modal-title"><b>Rename List</b></h3>
-        <h3 ng-if="ctrl.newTitleObj.listId === undefined" class="modal-title text-center bg-danger" id="modal-title"><b>Name
-            already exist!</b> <small>Choose a new name</small></h3>
+        <h3 ng-if="ctrl.newTitleObj.listId" class="modal-title text-center bg-primary" id="modal-title"><b>Rename
+            List</b></h3>
+        <div ng-if="ctrl.newTitleObj.listId === undefined" class="modal-title text-center bg-danger" id="modal-title">
+            <h3>Name already exist!</h3>
+            <h4>Choose a new name</h4>
+        </div>
     </div>
 
     <form name="form">
         <div class="modal-body" id="modal-body">
             <label class="inline">
                 <input type="text" name="title" class="form-control"
-                       ng-model="ctrl.newTitleObj.newListTitle" placeholder="choose a new name"  ng-click="ctrl.select($event)" required/>
+                       ng-model="ctrl.newTitleObj.newListTitle" placeholder="choose a new name"
+                       ng-click="ctrl.select($event)" required/>
             </label>
             <br><br>
-                <div class="text-center" ng-show="form.title.$error.required"><br><b>Enter a new name or cancel</b></div>
+            <div class="text-center" ng-show="form.title.$error.required"><br><b>Enter a new name or cancel</b></div>
         </div>
 
         <div class="modal-footer">

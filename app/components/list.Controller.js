@@ -2,7 +2,25 @@
     angular
         .module('myApp')
         .controller("ListController", ListController)
-        .directive('list', listDirective);
+        .directive('list', listDirective)
+        .directive("onRepeatDone", onRepeatDoneDirective);
+
+    onRepeatDoneDirective.$inject = ['utilService'];
+
+    function onRepeatDoneDirective(utilService) {
+        return {
+            restrict: 'A',
+            link: function ($scope, element) {
+                var daysPassed = utilService.calcDates($scope.todo.created);
+                var todoTitleHtml = angular.element(element).find('label');
+
+                if (daysPassed > 30) return todoTitleHtml.addClass('level3');
+                if (daysPassed > 15) return todoTitleHtml.addClass('level2');
+                if (daysPassed > 5) return todoTitleHtml.addClass('level1');
+
+            }
+        }
+    }
 
 
     function listDirective() {
@@ -15,9 +33,9 @@
         }
     }
 
-    ListController.$inject = ['editTodoModalService', 'localStorageService', 'todoItemConstructor', 'newTitleModalService', 'utilService', '$state', '$stateParams'];
+    ListController.$inject = ['confirmModalService', 'editTodoModalService', 'localStorageService', 'todoItemConstructor', 'newTitleModalService', 'utilService', '$state', '$stateParams'];
 
-    function ListController(editTodoModalService, localStorageService, todoItemConstructor, newTitleModalService, utilService, $state, $stateParams) {
+    function ListController(confirmModalService, editTodoModalService, localStorageService, todoItemConstructor, newTitleModalService, utilService, $state, $stateParams) {
         var ctrl = this;
         ctrl.newTodo = '';
         ctrl.listId = Number($stateParams.listId);
@@ -28,10 +46,9 @@
         ctrl.openEditTodoModal = openEditTodoModal;
         ctrl.deleteTodo = deleteTodo;
         ctrl.renameList = renameList;
-        ctrl.deleteList = deleteList;
+        ctrl.openConfirmDeleteModal = openConfirmDeleteModal;
 
         //////////
-
 
 
         function addNewTodo(todoTitle) {
@@ -96,7 +113,11 @@
             }
         }
 
-        function deleteList() {
+        function openConfirmDeleteModal() {
+            confirmModalService.confirmModal(handleDeleteList);
+        }
+
+        function handleDeleteList() {
             var listIndex = ctrl.userLists.findIndex(function (list) {
                 return list.id === ctrl.currList.id
             });
@@ -104,6 +125,7 @@
             ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
             $state.go('^', {}, {reload: true});
         }
+
     }
 
     function listLink(scope, iElement, iAttrs, ctrl) {

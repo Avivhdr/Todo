@@ -13,9 +13,9 @@
         }
     }
 
-    MultiViewController.$inject = ['localStorageService', 'todoItemConstructor', 'editTodoModalService', 'newTitleModalService', 'utilService'];
+    MultiViewController.$inject = ['confirmModalService', 'localStorageService', 'todoItemConstructor', 'editTodoModalService', 'newTitleModalService', 'utilService'];
 
-    function MultiViewController(localStorageService, todoItemConstructor, editTodoModalService, newTitleModalService, utilService) {
+    function MultiViewController(confirmModalService, localStorageService, todoItemConstructor, editTodoModalService, newTitleModalService, utilService) {
         var ctrl = this;
         ctrl.newTodo = [];
         ctrl.userLists = localStorageService.getStorageSync('lists');
@@ -24,12 +24,12 @@
         ctrl.openEditTodoModal = openEditTodoModal;
         ctrl.deleteTodo = deleteTodo;
         ctrl.renameList = renameList;
-        ctrl.deleteList = deleteList;
+        ctrl.openConfirmDeleteModal = openConfirmDeleteModal;
 
         //////////
 
         function addNewTodo(todoTitle, listIndex) {
-            if (todoTitle !== '') {
+            if (todoTitle == false) {
                 var newTodoObj = new todoItemConstructor.Todo(todoTitle);
                 ctrl.userLists[listIndex].todos.push(newTodoObj);
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);
@@ -84,7 +84,11 @@
             }
         }
 
-        function deleteList(listId) {
+        function openConfirmDeleteModal(listId) {
+            confirmModalService.confirmModal(handleDeleteList, listId);
+        }
+
+        function handleDeleteList(listId) {
             var listIndex = ctrl.userLists.findIndex(function (list) {
                 return list.id === listId
             });
