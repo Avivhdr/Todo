@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row ">
-        <div class="col-xs-12 col-sm-5 col-lg-3">
+        <div class="col-xs-12 col-lg-3">
             <div class="animated slideInLeft list-display">
                 <br>
                 <div class="input-group">
@@ -13,7 +13,7 @@
                            ng-keyup="$event.keyCode == 13 && ctrl.addNewList({newListTitle: ctrl.newListTitle})"/>
                 </div>
                 <br><br>
-                <h3 class="text-center text-danger" ng-if="ctrl.userLists.length < 1"> There are no existing lists </h3>
+                <h3 class="text-center text-danger" ng-if="ctrl.userLists.length < 1"> Create a list.. </h3>
 
                 <div ng-repeat="list in ctrl.userLists">
                     <button type="button" id="{{list.id}}" class="btn btn-primary btn-block text-left"
@@ -23,6 +23,6 @@
             </div>
         </div>
 
-        <div id="list" class="col-xs-12 col-sm-7 col-lg-9" ui-view></div>
+        <div id="list" class="col-xs-12 col-lg-9" ui-view></div>
     </div>
 </div>
