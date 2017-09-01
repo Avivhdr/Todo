@@ -6,48 +6,6 @@
     function dataService() {
         var newUserLists = [
             {
-                "id": 1,
-                "title": "Shopping List",
-                "todos": [
-                    {
-                        "id": 16,
-                        "title": "Milk",
-                        "location": '',
-                        "completed": false,
-                        "details": "only 9% fat",
-                        "dueDate": '',
-                        "created": "Wed August 26 2017"
-                    },
-                    {
-                        "id": 12,
-                        "title": "Bread",
-                        "location": '',
-                        "completed": false,
-                        "details": "Rye",
-                        "dueDate": '',
-                        "created": "Wed August 24 2017"
-                    },
-                    {
-                        "id": 13,
-                        "title": "Cheese",
-                        "location": '',
-                        "completed": false,
-                        "details": "",
-                        "dueDate": '',
-                        "created": "Wed August 27 2017"
-                    },
-                    {
-                        "id": 14,
-                        "title": "Mayonnaise",
-                        "location": '',
-                        "completed": false,
-                        "details": "",
-                        "dueDate": '',
-                        "created": "Wed August 29 2017"
-                    }
-                ]
-            },
-            {
                 "id": 2,
                 "title": "Color Example",
                 "todos": [
@@ -86,6 +44,48 @@
                         "details": "",
                         "dueDate": '',
                         "created": "Wed August 01 2017"
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "title": "Shopping List",
+                "todos": [
+                    {
+                        "id": 16,
+                        "title": "Milk",
+                        "location": '',
+                        "completed": false,
+                        "details": "only 9% fat",
+                        "dueDate": '',
+                        "created": "Wed August 26 2017"
+                    },
+                    {
+                        "id": 12,
+                        "title": "Bread",
+                        "location": '',
+                        "completed": false,
+                        "details": "Rye",
+                        "dueDate": '',
+                        "created": "Wed August 24 2017"
+                    },
+                    {
+                        "id": 13,
+                        "title": "Cheese",
+                        "location": '',
+                        "completed": false,
+                        "details": "",
+                        "dueDate": '',
+                        "created": "Wed August 27 2017"
+                    },
+                    {
+                        "id": 14,
+                        "title": "Mayonnaise",
+                        "location": '',
+                        "completed": false,
+                        "details": "",
+                        "dueDate": '',
+                        "created": "Wed August 29 2017"
                     }
                 ]
             },
