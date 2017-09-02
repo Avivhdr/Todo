@@ -13,10 +13,13 @@
             link: function ($scope, element) {
                 var daysPassed = utilService.calcDates($scope.todo.created);
                 var todoTitleHtml = angular.element(element).find('label');
-
+                var elem = document.createElement('span');
+                elem.innerHTML = "<span class='daysPassed'>("+daysPassed+")</span>";
+                todoTitleHtml.append(elem);
                 if (daysPassed > 30) return todoTitleHtml.addClass('level3');
-                if (daysPassed > 15) return todoTitleHtml.addClass('level2');
-                if (daysPassed > 5) return todoTitleHtml.addClass('level1');
+                if (daysPassed > 20) return todoTitleHtml.addClass('level2');
+                if (daysPassed > 10) return todoTitleHtml.addClass('level1');
+
 
             }
         }

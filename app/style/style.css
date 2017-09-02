@@ -94,18 +94,27 @@ input.ng-invalid {
 }
 
 .level1{
-    color: darkorange;
+    color: orange;
 }
 
 .level2{
-    color: darkred;
+    color: orangered;
 }
 
 .level3 {
-    background-color: firebrick;
-    color: white;
+    font-weight: bold;
+    color: darkred;
+    text-decoration: underline;
+    text-decoration-style:dotted;
+    /*background-color: firebrick;*/
+    /*color: white;*/
 }
 
 .bg-list-name{
     background-color: #989e9c;
+}
+
+.daysPassed{
+    font-size: 75%;
+    /*color: #5e5e5e;*/
 }
