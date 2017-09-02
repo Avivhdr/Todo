@@ -14,7 +14,7 @@
                         "title": "Ragular",
                         "location": '',
                         "completed": false,
-                        "details": "the old ones",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed September 01 2017"
                     },
@@ -23,7 +23,7 @@
                         "title": "Over 10 days",
                         "location": '',
                         "completed": false,
-                        "details": "",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed August 21 2017"
                     },
@@ -32,7 +32,7 @@
                         "title": "Over 20 days",
                         "location": '',
                         "completed": false,
-                        "details": "always bring a towel",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed August 11 2017"
                     },
@@ -41,7 +41,7 @@
                         "title": "Over 30 days",
                         "location": '',
                         "completed": false,
-                        "details": "",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed August 01 2017"
                     }
@@ -74,7 +74,7 @@
                         "title": "Cheese",
                         "location": '',
                         "completed": false,
-                        "details": "",
+                        "details": "Blue",
                         "dueDate": '',
                         "created": "Wed September 01 2017"
                     },
@@ -98,7 +98,7 @@
                         "title": "call mom",
                         "location": '',
                         "completed": true,
-                        "details": "ask how is she",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed September 01 2017"
                     },
@@ -116,7 +116,7 @@
                         "title": "go shopping",
                         "location": '',
                         "completed": false,
-                        "details": "",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed September 01 2017"
                     },
@@ -140,7 +140,7 @@
                         "title": "Rick & Morty",
                         "location": '',
                         "completed": true,
-                        "details": "",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed September 01 2017"
                     },
@@ -149,7 +149,7 @@
                         "title": "Planet Earth 2",
                         "location": '',
                         "completed": false,
-                        "details": "",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed September 01 2017"
                     },
@@ -158,7 +158,7 @@
                         "title": "Game of Thrones",
                         "location": '',
                         "completed": true,
-                        "details": "",
+                        "details": "Details appear in mouseover",
                         "dueDate": '',
                         "created": "Wed September 01 2017"
                     },

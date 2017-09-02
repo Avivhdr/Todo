@@ -28,7 +28,7 @@
             ng-repeat="todo in ctrl.currList.todos | orderBy: 'completed' | filter: search">
             <td><input type="checkbox" id="{{todo.id}}" ng-model="todo.completed" ng-change="ctrl.completeTodo()">
                 <label for="{{todo.id}}">
-                    <span uib-tooltip="{{todo.details}}" tooltip-placement="right" tooltip-class="customClass"
+                    <span uib-tooltip="{{todo.details}}" tooltip-placement="buttom" tooltip-class="customClass"
                           class="Aclonica font-size-md" ng-class="{lineThrough: todo.completed}">  {{todo.title}}</span>
                 </label></td>
             <td><span role="button" class="glyphicon glyphicon-pencil"
