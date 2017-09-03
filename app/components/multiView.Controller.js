@@ -29,7 +29,8 @@
         //////////
 
         function addNewTodo(todoTitle, listIndex) {
-            if (todoTitle == false) {
+            debugger;
+            if (todoTitle !== '' && todoTitle !== undefined) {
                 var newTodoObj = new todoItemConstructor.Todo(todoTitle);
                 ctrl.userLists[listIndex].todos.push(newTodoObj);
                 ctrl.userLists = localStorageService.populateStorage('lists', ctrl.userLists);

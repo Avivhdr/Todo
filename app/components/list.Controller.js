@@ -55,7 +55,7 @@
 
 
         function addNewTodo(todoTitle) {
-            if (todoTitle !== '') {
+            if (todoTitle !== '' && todoTitle !== undefined) {
                 var newTodoObj = new todoItemConstructor.Todo(todoTitle);
                 ctrl.userLists.forEach(function (list) {
                     if (list.id === ctrl.listId) {
