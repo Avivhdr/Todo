@@ -41,14 +41,11 @@ input[type="text"] {
     margin-left: 0;
 }
 
-.lists-list {
-    background-color: #f0f0f0;
-}
 .row {margin: 1.5em -7.5px}
 [class*="col-"] {padding: 0 7.5px;}
 
 .list-container {
-    background-color: #f0f0f0;
+    background-color: whitesmoke;
     border: 2px solid lightgrey;
     padding: 5px;
     border-radius: 10px;
@@ -106,8 +103,6 @@ input.ng-invalid {
     color: darkred;
     text-decoration: underline;
     text-decoration-style:dotted;
-    /*background-color: firebrick;*/
-    /*color: white;*/
 }
 
 .bg-list-name{
