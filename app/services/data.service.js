@@ -6,7 +6,7 @@
     function dataService() {
         var newUserLists = [
             {
-                "id": 2,
+                "id": 1,
                 "title": "Color Example",
                 "todos": [
                     {
@@ -48,7 +48,7 @@
                 ]
             },
             {
-                "id": 1,
+                "id": 2,
                 "title": "Shopping List",
                 "todos": [
                     {

@@ -1,12 +1,13 @@
 <div>
     <br>
-    <div ng-if="ctrl.userLists.length < 1" class="list-container">
-        <h1 class="text-danger"> There are no existing lists </h1>
-        <h3 class="text-danger"> add a new list in "Home" tab </h3>
+    <div ng-if="ctrl.userLists.length < 1" class="list-container Aclonica">
+        <h1> There are no existing lists </h1>
+        <h3> add a new list in "Home" tab </h3>
     </div>
 
-    <div class="container-fluid">
-        <input ng-if="ctrl.userLists.length >=1 " type="text" class="form-control width-40" ng-model="search.title"
+    <div ng-if="ctrl.userLists.length>0" class="container-fluid">
+        <!--<input  type="text" class="form-control width-40" ng-model="search.title"-->
+        <input type="text" class="form-control width-40" ng-model="search.title"
                placeholder="search to-do.."/>
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-3 list-container"
@@ -18,7 +19,7 @@
                        placeholder="Add a new to-do:"
                        ng-keyup="$event.keyCode == 13 && ctrl.addNewTodo(ctrl.newTodo[$index],$index)"/>
                 <br><br>
-                <div on-repeat-done ng-repeat="todo in list.todos | orderBy: 'completed' | filter: search ">
+                <div on-repeat-done ng-repeat="todo in list.todos | orderBy: 'completed' | filter: search">
                     <span role="button" class="glyphicon glyphicon-remove-sign"
                           ng-click="ctrl.deleteTodo($index, list.id)"></span>
                     <span role="button" class="glyphicon glyphicon-pencil"
