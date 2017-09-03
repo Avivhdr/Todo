@@ -70,9 +70,7 @@ input.ng-invalid {
     background-color: yellow;
 }
 
-
 .tooltip.customClass .tooltip-inner {
-/*.tooltip.customClass {*/
     color: whitesmoke;
     background-color: lightslategray;
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
@@ -111,5 +109,4 @@ input.ng-invalid {
 
 .daysPassed{
     font-size: 75%;
-    /*color: #5e5e5e;*/
 }
