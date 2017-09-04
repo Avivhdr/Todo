@@ -10,8 +10,10 @@
         <input type="text" class="form-control width-40" ng-model="search.title"
                placeholder="search to-do.."/>
         <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-3 list-container"
+            <div class="col-sm-12 col-md-4 col-lg-3 "
                  ng-repeat="list in ctrl.userLists">
+              <div class="list-container">
+
                 <h3 class="bg-list-name text-center border-radius-4 padding-5 Aclonica">{{list.title}}</h3>
                 <button class="btn btn-default btn-sm" ng-click="ctrl.addNewTodo(ctrl.newTodo[$index],$index)">+
                 </button>
@@ -37,6 +39,8 @@
                         ng-click="ctrl.renameList({newListTitle: list.title, listId: list.id})">Rename List
                 </button>
                 <button class="btn btn-danger btn-xs" ng-click="ctrl.openConfirmDeleteModal(list.id)">Delete List</button>
+              </div>
+
             </div>
         </div>
     </div>

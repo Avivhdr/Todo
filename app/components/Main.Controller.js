@@ -32,7 +32,6 @@
         function openList(listId) {
             if (listId !== undefined && listId !== ctrl.currListId) {
                 $state.go('main.list', {listId: listId});
-                window.location='#list';
                 ctrl.currListId = listId;
             }
         }

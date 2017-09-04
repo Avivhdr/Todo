@@ -15,6 +15,7 @@
                         longitude: place.geometry.location.lng(),
                         url: place.url
                     };
+                    debugger;
                     $scope.$apply();
                 });
             }
