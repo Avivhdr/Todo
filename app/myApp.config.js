@@ -1,7 +1,9 @@
+// from work computer
 (function () {
     angular
         .module('myApp')
         .config(config);
+
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
