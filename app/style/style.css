@@ -50,9 +50,6 @@ input[type="text"] {
     padding: 5px;
     border-radius: 10px;
     box-shadow: 0 0 9px lightgray;
-    /*margin-top: 10px;*/
-    /*margin-bottom: 10px;*/
-    /*margin-right: 1px;*/
     margin: 10px 1px 10px;
 }
 
@@ -91,7 +88,7 @@ input.ng-invalid {
 }
 
 .level1{
-    color: orange;
+    color: #deb91b;
 }
 
 .level2{
@@ -101,8 +98,6 @@ input.ng-invalid {
 .level3 {
     font-weight: bold;
     color: darkred;
-    text-decoration: underline;
-    text-decoration-style:dotted;
 }
 
 .bg-list-name{

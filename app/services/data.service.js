@@ -4,88 +4,92 @@
         .factory('dataService', dataService);
 
     function dataService() {
+        var now = new Date();
+        var old = new Date();
+        // var older = new Date();
+        // var oldest = new Date();
         var newUserLists = [
             {
-                "id": 1,
-                "title": "Color Example",
-                "todos": [
-                    {
-                        "id": 21,
-                        "title": "Ragular",
-                        "location": '',
-                        "completed": false,
-                        "details": "Details appear in mouseover",
-                        "dueDate": '',
-                        "created": "Wed September 01 2017"
-                    },
-                    {
-                        "id": 22,
-                        "title": "This to-do exists over 10 days",
-                        "location": '',
-                        "completed": false,
-                        "details": "Details appear in mouseover",
-                        "dueDate": '',
-                        "created": "Wed August 21 2017"
-                    },
-                    {
-                        "id": 23,
-                        "title": "This to-do exists over 20 days",
-                        "location": '',
-                        "completed": false,
-                        "details": "Details appear in mouseover",
-                        "dueDate": '',
-                        "created": "Wed August 11 2017"
-                    },
-                    {
-                        "id": 24,
-                        "title": "This to-do exists over 30 days",
-                        "location": '',
-                        "completed": false,
-                        "details": "Details appear in mouseover",
-                        "dueDate": '',
-                        "created": "Wed August 01 2017"
-                    }
-                ]
-            },
-            {
+              "id": 1,
+              "title": "Old tasks Example",
+              "todos": [
+                  {
+                      "id": 21,
+                      "title": "This is a new task",
+                      "location": '',
+                      "completed": false,
+                      "details": "Details appear in mouseover",
+                      "dueDate": '',
+                      "created": now.toDateString(),
+                  },
+                  {
+                      "id": 22,
+                      "title": "This task was created some time ago",
+                      "location": '',
+                      "completed": false,
+                      "details": "Details appear in mouseover",
+                      "dueDate": '',
+                      "created": old.setDate(old.getDate() - 10) && old.toDateString()
+                  },
+                  {
+                      "id": 23,
+                      "title": "This one is even older",
+                      "location": '',
+                      "completed": false,
+                      "details": "Details appear in mouseover",
+                      "dueDate": '',
+                      "created": old.setDate(old.getDate() - 10) && old.toDateString()
+                  },
+                  {
+                      "id": 24,
+                      "title": "And this one is REALLY old",
+                      "location": '',
+                      "completed": false,
+                      "details": "Details appear in mouseover",
+                      "dueDate": '',
+                      "created": old.setDate(old.getDate() - 10) && old.toDateString()
+                  }
+              ]
+          },
+          {
                 "id": 2,
                 "title": "Shopping List",
                 "todos": [
                     {
                         "id": 16,
-                        "title": "Milk",
+                        "title": "THIS APP",
                         "location": '',
                         "completed": false,
                         "details": "only 9% fat",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 12,
-                        "title": "Bread",
+                        "title": "WAS BUILT BY ME",
                         "location": '',
                         "completed": false,
                         "details": "Rye",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 13,
-                        "title": "Cheese",
+                        "title": "4 YEARS AGO",
                         "location": '',
                         "completed": false,
                         "details": "Blue",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 14,
-                        "title": "Mayonnaise",
+                        "title": "WITH AngularJS",
                         "location": '',
                         "completed": false,
                         "details": "",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     }
                 ]
             },
@@ -95,45 +99,45 @@
                 "todos": [
                     {
                         "id": 31,
-                        "title": "call mom",
+                        "title": "Call mom",
                         "location": '',
                         "completed": true,
-                        "details": "Details appear in mouseover",
+                        "details": "Task details appear on hover",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 32,
-                        "title": "clean home",
+                        "title": "Clean home",
                         "location": '',
                         "completed": false,
-                        "details": "windows also",
+                        "details": "Make sure you have cleaning products",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 33,
-                        "title": "go shopping",
+                        "title": "Go shopping",
                         "location": '',
                         "completed": false,
-                        "details": "Details appear in mouseover",
+                        "details": "See sShopping List",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 34,
                         "title": "pick up mail",
                         "location": '',
                         "completed": false,
-                        "details": "open from 8:00 to 13:00",
+                        "details": "Open from 8:00 to 13:00",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     }
                 ]
             },
             {
                 "id": 4,
-                "title": "Download",
+                "title": "Watch",
                 "todos": [
                     {
                         "id": 41,
@@ -142,7 +146,7 @@
                         "completed": true,
                         "details": "Details appear in mouseover",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 42,
@@ -151,7 +155,7 @@
                         "completed": false,
                         "details": "Details appear in mouseover",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 43,
@@ -160,7 +164,7 @@
                         "completed": true,
                         "details": "Details appear in mouseover",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     },
                     {
                         "id": 44,
@@ -169,7 +173,7 @@
                         "completed": false,
                         "details": "Season 2",
                         "dueDate": '',
-                        "created": "Wed September 01 2017"
+                        "created": now.toDateString()
                     }
                 ]
             }
