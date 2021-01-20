@@ -5,22 +5,63 @@
 
     function dataService() {
         var now = new Date();
+        var threeDays = new Date();
         var old = new Date();
-        // var older = new Date();
-        // var oldest = new Date();
         var newUserLists = [
+          {
+            "id": 1,
+            "title": "README",
+            "todos": [
+                {
+                    "id": 10,
+                    "title": "JUST-DO-IT",
+                    "location": '',
+                    "completed": false,
+                    "details": "only 9% fat",
+                    "dueDate": '',
+                    "created": now.toDateString()
+                },
+                {
+                    "id": 11,
+                    "title": "was built by Aviv Hadar",
+                    "location": '',
+                    "completed": false,
+                    "details": "Rye",
+                    "dueDate": '',
+                    "created": now.toDateString()
+                },
+                {
+                    "id": 12,
+                    "title": "in 2016 using AngularJS",
+                    "location": '',
+                    "completed": false,
+                    "details": "Blue",
+                    "dueDate": '',
+                    "created": now.toDateString()
+                },
+                {
+                  "id": 13,
+                  "title": "tip: try the 'See all' route ⬆️",
+                  "location": '',
+                  "completed": false,
+                  "details": "Details appear in mouseover",
+                  "dueDate": '',
+                  "created": now.toDateString()
+              }
+            ]
+        },
             {
-              "id": 1,
+              "id": 2,
               "title": "Old tasks Example",
               "todos": [
                   {
                       "id": 21,
-                      "title": "This is a new task",
+                      "title": "This task was created 3 days ago",
                       "location": '',
                       "completed": false,
                       "details": "Details appear in mouseover",
                       "dueDate": '',
-                      "created": now.toDateString(),
+                      "created": threeDays.setDate(now.getDate() - 3) && threeDays.toDateString(),
                   },
                   {
                       "id": 22,
@@ -48,54 +89,12 @@
                       "details": "Details appear in mouseover",
                       "dueDate": '',
                       "created": old.setDate(old.getDate() - 10) && old.toDateString()
-                  }
+                  },
               ]
           },
-          {
-                "id": 2,
-                "title": "Shopping List",
-                "todos": [
-                    {
-                        "id": 16,
-                        "title": "THIS APP",
-                        "location": '',
-                        "completed": false,
-                        "details": "only 9% fat",
-                        "dueDate": '',
-                        "created": now.toDateString()
-                    },
-                    {
-                        "id": 12,
-                        "title": "WAS BUILT BY ME",
-                        "location": '',
-                        "completed": false,
-                        "details": "Rye",
-                        "dueDate": '',
-                        "created": now.toDateString()
-                    },
-                    {
-                        "id": 13,
-                        "title": "4 YEARS AGO",
-                        "location": '',
-                        "completed": false,
-                        "details": "Blue",
-                        "dueDate": '',
-                        "created": now.toDateString()
-                    },
-                    {
-                        "id": 14,
-                        "title": "WITH AngularJS",
-                        "location": '',
-                        "completed": false,
-                        "details": "",
-                        "dueDate": '',
-                        "created": now.toDateString()
-                    }
-                ]
-            },
             {
                 "id": 3,
-                "title": "To Do",
+                "title": "General",
                 "todos": [
                     {
                         "id": 31,
@@ -176,7 +175,49 @@
                         "created": now.toDateString()
                     }
                 ]
-            }
+            },
+            {
+              "id": 5,
+              "title": "Shopping",
+              "todos": [
+                  {
+                      "id": 51,
+                      "title": "Milk",
+                      "location": '',
+                      "completed": true,
+                      "details": "",
+                      "dueDate": '',
+                      "created": now.toDateString()
+                  },
+                  {
+                      "id": 52,
+                      "title": "Coffee",
+                      "location": '',
+                      "completed": false,
+                      "details": "",
+                      "dueDate": '',
+                      "created": now.toDateString()
+                  },
+                  {
+                      "id": 53,
+                      "title": "Pasta",
+                      "location": '',
+                      "completed": true,
+                      "details": "",
+                      "dueDate": '',
+                      "created": now.toDateString()
+                  },
+                  {
+                      "id": 54,
+                      "title": "PJ",
+                      "location": '',
+                      "completed": false,
+                      "details": "",
+                      "dueDate": '',
+                      "created": now.toDateString()
+                  }
+              ]
+          }
 
         ];
 
