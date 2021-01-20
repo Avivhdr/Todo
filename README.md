@@ -1,7 +1,5 @@
-# Todo
+Just Do It - Todo App 
 
-Angularjs to-do app
+Supports multi-list view
 
-bootstrap styles
-
-For live demo: https://avivhdr.github.io/Todo/
+For live demo: https://avivhdr.github.io/justdoit/
