@@ -28,7 +28,7 @@
                           ng-click="ctrl.openEditTodoModal({todo: todo, firstListId: list.id})"></span>
                     <input type="checkbox" id="{{todo.id}}" ng-model="todo.completed"
                            ng-change="ctrl.completeTodo()">
-                    <label for="{{todo.id}}">
+                    <label class="inline" for="{{todo.id}}">
                         <span uib-tooltip="{{todo.details}}" tooltip-placement="buttom" tooltip-class="customClass"
                               class="Aclonica font-size-md"
                               ng-class="{lineThrough: todo.completed}">{{todo.title}} </span>
