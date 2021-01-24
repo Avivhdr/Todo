@@ -56,7 +56,7 @@
               "todos": [
                   {
                       "id": 21,
-                      "title": "This task was created 3 days ago",
+                      "title": "This is a new task",
                       "location": '',
                       "completed": false,
                       "details": "Details appear in mouseover",
@@ -65,7 +65,7 @@
                   },
                   {
                       "id": 22,
-                      "title": "This task was created some time ago",
+                      "title": "This one is a bit older",
                       "location": '',
                       "completed": false,
                       "details": "Details appear in mouseover",
@@ -74,7 +74,7 @@
                   },
                   {
                       "id": 23,
-                      "title": "This one is even older",
+                      "title": "This one is much older",
                       "location": '',
                       "completed": false,
                       "details": "Details appear in mouseover",
